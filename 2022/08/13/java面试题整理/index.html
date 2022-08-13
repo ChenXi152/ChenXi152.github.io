@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="spring1.什么是Spring框架？Spring是一种轻量级框架，我们一般说的Spring框架就是Spring Framework，它是很多模块的集合，使用这些模块可以很方便地协助我们进行开发。这些模块是核心容器、数据访问&#x2F;集成、Web、AOP（面向切面编程）、工具、消息和测试模块。比如Core Container中的Core组件是Spring所有组件的核心，Beans组件和Context组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/08/13/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="spring1.什么是Spring框架？Spring是一种轻量级框架，我们一般说的Spring框架就是Spring Framework，它是很多模块的集合，使用这些模块可以很方便地协助我们进行开发。这些模块是核心容器、数据访问&#x2F;集成、Web、AOP（面向切面编程）、工具、消息和测试模块。比如Core Container中的Core组件是Spring所有组件的核心，Beans组件和Context组件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220408231041076.png">
+<meta property="og:image" content="https://github.com/lokles/Web-Development-Interview-With-Java/raw/main/images/redis%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png">
+<meta property="article:published_time" content="2022-08-13T05:28:50.715Z">
+<meta property="article:modified_time" content="2022-05-18T05:25:14.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220408231041076.png">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-13 13:28" pubdate>
+          2022年8月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          120 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><h2 id="1-什么是Spring框架？"><a href="#1-什么是Spring框架？" class="headerlink" title="1.什么是Spring框架？"></a>1.什么是Spring框架？</h2><p>Spring是一种轻量级框架，我们一般说的Spring框架就是Spring Framework，它是很多模块的集合，使用这些模块可以很方便地协助我们进行开发。这些模块是核心容器、数据访问/集成、Web、AOP（面向切面编程）、工具、消息和测试模块。比如Core Container中的Core组件是Spring所有组件的核心，Beans组件和Context组件是实现IOC和DI的基础，AOP组件用来实现面向切面编程。</p>
+<h2 id="2-列举一些重要的Spring模块？"><a href="#2-列举一些重要的Spring模块？" class="headerlink" title="2.列举一些重要的Spring模块？"></a>2.列举一些重要的Spring模块？</h2><p>Spring Core：基础，可以说Spring其他所有的功能都依赖于该类库。主要提供IOC和DI功能。</p>
+<p>Spring Aspects：该模块为与AspectJ的集成提供支持。</p>
+<p>Spring AOP：提供面向方面的编程实现。</p>
+<p>Spring JDBC：Java数据库连接。</p>
+<p>Spring JMS：Java消息服务。</p>
+<p>Spring ORM：用于支持Hibernate等ORM工具。</p>
+<p>Spring Web：为创建Web应用程序提供支持。</p>
+<p>Spring Test：提供了对JUnit和TestNG测试的支持。</p>
+<h2 id="3-什么是IOC-如何实现的？"><a href="#3-什么是IOC-如何实现的？" class="headerlink" title="3. 什么是IOC? 如何实现的？"></a>3. 什么是IOC? 如何实现的？</h2><p>IOC（Inversion Of Controll，控制反转）是一种设计思想，就是将原本在程序中手动创建对象的控制权，交给IOC容器来管理，并由IOC容器完成对象的注入。这样可以很大程度上简化应用的开发，把应用从复杂的依赖关系中解放出来。IOC容器就像是一个工厂一样，当我们需要创建一个对象的时候，只需要配置好配置文件/注解即可，完全不用考虑对象是如何被创建出来的，Spring 中的 IoC 的实现原理就是工厂模式加反射机制</p>
+<h2 id="4-什么是AOP-有哪些AOP的概念？"><a href="#4-什么是AOP-有哪些AOP的概念？" class="headerlink" title="4. 什么是AOP? 有哪些AOP的概念？"></a>4. 什么是AOP? 有哪些AOP的概念？</h2><p>AOP（面向切面编程）能够将那些与业务无关，却为业务模块所共同调用的逻辑或责任（例如事务处理、日志管理、权限控制等）封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可扩展性和可维护性。</p>
+<p>Spring AOP是基于动态代理的，如果要代理的对象实现了某个接口，那么Spring AOP就会使用JDK动态代理去创建代理对象；而对于没有实现接口的对象，就无法使用JDK动态代理，转而使用CGlib动态代理生成一个被代理对象的子类来作为代理</p>
+<p>当然也可以使用AspectJ，Spring AOP中已经集成了AspectJ，AspectJ应该算得上是Java生态系统中最完整的AOP框架了。使用AOP之后我们可以把一些通用功能抽象出来，在需要用到的地方直接使用即可，这样可以大大简化代码量。我们需要增加新功能也方便，提高了系统的扩展性。日志功能、事务管理和权限管理等场景都用到了AOP。</p>
+<h2 id="5-AOP包含的几个概念"><a href="#5-AOP包含的几个概念" class="headerlink" title="5.AOP包含的几个概念"></a>5.<strong>AOP包含的几个概念</strong></h2><ol>
+<li>Jointpoint（连接点）：具体的切面点点抽象概念，可以是在字段、方法上，Spring中具体表现形式是PointCut（切入点），仅作用在方法上。</li>
+<li>Advice（通知）: 在连接点进行的具体操作，如何进行增强处理的，分为前置、后置、异常、最终、环绕五种情况。</li>
+<li>目标对象：被AOP框架进行增强处理的对象，也被称为被增强的对象。</li>
+<li>AOP代理：AOP框架创建的对象，简单的说，代理就是对目标对象的加强。Spring中的AOP代理可以是JDK动态代理，也可以是CGLIB代理。</li>
+<li>Weaving（织入）：将增强处理添加到目标对象中，创建一个被增强的对象的过程</li>
+</ol>
+<p>总结为一句话就是：在目标对象（target object）的某些方法（jointpoint）添加不同种类的操作（通知、增强操处理），最后通过某些方法（weaving、织入操作）实现一个新的代理目标对象。</p>
+<h2 id="6-AOP-有哪些应用场景？"><a href="#6-AOP-有哪些应用场景？" class="headerlink" title="6.AOP 有哪些应用场景？"></a>6.AOP 有哪些应用场景？</h2><p>记录日志(调用方法后记录日志)</p>
+<p>监控性能(统计方法运行时间)</p>
+<p>权限控制(调用方法前校验是否有权限)</p>
+<p>事务管理(调用方法前开启事务，调用方法后提交关闭事务 )</p>
+<p>缓存优化(第一次调用查询数据库，将查询结果放入内存对象， 第二次调用，直接从内存对象返回，不需要查询数据库 ）</p>
+<h2 id="7-有哪些AOP-Advice通知的类型？"><a href="#7-有哪些AOP-Advice通知的类型？" class="headerlink" title="7. 有哪些AOP Advice通知的类型？"></a>7. 有哪些AOP Advice通知的类型？</h2><p>特定 JoinPoint 处的 Aspect 所采取的动作称为 Advice。Spring AOP 使用一个 Advice 作为拦截器，在 JoinPoint “周围”维护一系列的拦截器。</p>
+<ul>
+<li><strong>前置通知</strong>（Before advice） ： 这些类型的 Advice 在 joinpoint 方法之前执行，并使用 @Before 注解标记进行配置。</li>
+<li><strong>后置通知</strong>（After advice） ：这些类型的 Advice 在连接点方法之后执行，无论方法退出是正常还是异常返回，并使用 @After 注解标记进行配置。</li>
+<li><strong>返回后通知</strong>（After return advice） ：这些类型的 Advice 在连接点方法正常执行后执行，并使用@AfterReturning 注解标记进行配置。</li>
+<li><strong>环绕通知</strong>（Around advice） ：这些类型的 Advice 在连接点之前和之后执行，并使用 @Around 注解标记进行配置。</li>
+<li><strong>抛出异常后通知</strong>（After throwing advice） ：仅在 joinpoint 方法通过抛出异常退出并使用 @AfterThrowing 注解标记配置时执行</li>
+</ul>
+<h2 id="8-AOP-有哪些实现方式？"><a href="#8-AOP-有哪些实现方式？" class="headerlink" title="8.AOP 有哪些实现方式？"></a>8.AOP 有哪些实现方式？</h2><p>实现 AOP 的技术，主要分为两大类：</p>
+<ul>
+<li><p>静态代理</p>
+<p> - 指使用 AOP 框架提供的命令进行编译，从而在编译阶段就可生成 AOP 代理类，因此也称为编译时增强；</p>
+<ul>
+<li>编译时编织（特殊编译器实现）</li>
+<li>类加载时编织（特殊的类加载器实现）。</li>
+</ul>
+</li>
+<li><p>动态代理</p>
+<p> - 在运行时在内存中“临时”生成 AOP 动态代理类，因此也被称为运行时增强。</p>
+<ul>
+<li>JDK 动态代理<ul>
+<li>JDK Proxy 是 Java 语言自带的功能，无需通过加载第三方类实现；</li>
+<li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新，Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li>
+<li>JDK Proxy 是通过拦截器加反射的方式实现的；</li>
+<li>JDK Proxy 只能代理实现接口的类；</li>
+<li>JDK Proxy 实现和调用起来比较简单；</li>
+</ul>
+</li>
+<li>CGLIB<ul>
+<li>CGLib 是第三方提供的工具，基于 ASM 实现的，性能比较高；</li>
+<li>CGLib 无需通过接口来实现，它是针对类实现代理，主要是对指定的类生成一个子类，它是通过实现子类的方式来完成调用的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-Spring中的bean的作用域有哪些？"><a href="#9-Spring中的bean的作用域有哪些？" class="headerlink" title="9.Spring中的bean的作用域有哪些？"></a>9.Spring中的bean的作用域有哪些？</h2><p>singleton：唯一bean实例，Spring中的bean默认都是单例的。</p>
+<p>prototype：每次请求都会创建一个新的bean实例。</p>
+<p>request：每一次HTTP请求都会产生一个新的bean，该bean仅在当前HTTP request内有效。</p>
+<p>session：每一次HTTP请求都会产生一个新的bean，该bean仅在当前HTTP session内有效。</p>
+<p>global-session：全局session作用域，仅仅在基于Portlet的Web应用中才有意义，Spring5中已经没有了。Portlet是能够生成语义代码（例如HTML）片段的小型Java Web插件。它们基于Portlet容器，可以像Servlet一样处理HTTP请求。但是与Servlet不同，每个Portlet都有不同的会话</p>
+<h2 id="10-Spring中的bean生命周期？"><a href="#10-Spring中的bean生命周期？" class="headerlink" title="10.Spring中的bean生命周期？"></a>10.Spring中的bean生命周期？</h2><p><strong>Bean的完整生命周期经历了各种方法调用，这些方法可以划分为以下几类</strong>：</p>
+<ul>
+<li><strong>Bean自身的方法</strong>： 这个包括了Bean本身调用的方法和通过配置文件中<code>&lt;bean&gt;</code>的init-method和destroy-method指定的方法</li>
+<li><strong>Bean级生命周期接口方法</strong>： 这个包括了BeanNameAware、BeanFactoryAware、ApplicationContextAware；当然也包括InitializingBean和DiposableBean这些接口的方法（可以被@PostConstruct和@PreDestroy注解替代)</li>
+<li><strong>容器级生命周期接口方法</strong>： 这个包括了InstantiationAwareBeanPostProcessor 和 BeanPostProcessor 这两个接口实现，一般称它们的实现类为“后处理器”。</li>
+<li><strong>工厂后处理器接口方法</strong>： 这个包括了AspectJWeavingEnabler, ConfigurationClassPostProcessor, CustomAutowireConfigurer等等非常有用的工厂后处理器　　接口的方法。工厂后处理器也是容器级的。在应用上下文装配配置文件之后立即调用</li>
+</ul>
+<h2 id="11-说说自己对于Spring-MVC的了解？"><a href="#11-说说自己对于Spring-MVC的了解？" class="headerlink" title="11.说说自己对于Spring MVC的了解？"></a>11.说说自己对于Spring MVC的了解？</h2><p>MVC是一种设计模式，Spring MVC是一款很优秀的MVC框架。Spring MVC可以帮助我们进行更简洁的Web层的开发，并且它天生与Spring框架集成。Spring MVC下我们一般把后端项目分为Service层（处理业务）、Dao层（数据库操作）、Entity层（实体类）、Controller层（控制层，返回数据给前台页面）。</p>
+<h2 id="12-Spring-MVC的工作原理了解嘛？"><a href="#12-Spring-MVC的工作原理了解嘛？" class="headerlink" title="12.Spring MVC的工作原理了解嘛？"></a>12.Spring MVC的工作原理了解嘛？</h2><p><img src="C:\Users\ZhangXL\AppData\Roaming\Typora\typora-user-images\image-20220408231041076.png" srcset="/img/loading.gif" lazyload alt="image-20220408231041076"></p>
+<p>流程说明：</p>
+<p>1.客户端（浏览器）发送请求，直接请求到DispatcherServlet。</p>
+<p>2.DispatcherServlet根据请求信息调用HandlerMapping，解析请求对应的Handler。</p>
+<p>3.解析到对应的Handler（也就是我们平常说的Controller控制器）。</p>
+<p>4.HandlerAdapter会根据Handler来调用真正的处理器来处理请求和执行相对应的业务逻辑。</p>
+<p>5.处理器处理完业务后，会返回一个ModelAndView对象，Model是返回的数据对象，View是逻辑上的View。</p>
+<p>6.ViewResolver会根据逻辑View去查找实际的View。</p>
+<p>7.DispatcherServlet把返回的Model传给View（视图渲染）。</p>
+<p>8.把View返回给请求者（浏览器）</p>
+<h2 id="13-Spring框架中用到了哪些设计模式"><a href="#13-Spring框架中用到了哪些设计模式" class="headerlink" title="13. Spring框架中用到了哪些设计模式"></a>13. Spring框架中用到了哪些设计模式</h2><p>1.工厂设计模式：Spring使用工厂模式通过BeanFactory和ApplicationContext创建bean对象。</p>
+<p>2.代理设计模式：Spring AOP功能的实现。</p>
+<p>3.单例设计模式：Spring中的bean默认都是单例的。</p>
+<p>4.模板方法模式：Spring中的jdbcTemplate、hibernateTemplate等以Template结尾的对数据库操作的类，它们就使用到了模板模式。</p>
+<p>5.包装器设计模式：我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
+<p>6.观察者模式：Spring事件驱动模型就是观察者模式很经典的一个应用。</p>
+<p>7.适配器模式：Spring AOP的增强或通知（Advice）使用到了适配器模式、Spring MVC中也是用到了适配器模式适配Controller</p>
+<h2 id="14-Component和-Bean的区别是什么？"><a href="#14-Component和-Bean的区别是什么？" class="headerlink" title="14.@Component和@Bean的区别是什么？"></a>14.@Component和@Bean的区别是什么？</h2><p>1.作用对象不同。@Component注解作用于类，而@Bean注解作用于方法。</p>
+<p>2.@Component注解通常是通过类路径扫描来自动侦测以及自动装配到Spring容器中（我们可以使用@ComponentScan注解定义要扫描的路径）。@Bean注解通常是在标有该注解的方法中定义产生这个bean，告诉Spring这是某个类的实例，当我需要用它的时候还给我。</p>
+<p>3.@Bean注解比@Component注解的自定义性更强，而且很多地方只能通过@Bean注解来注册bean。比如当引用第三方库的类需要装配到Spring容器的时候，就只能通过@Bean注解来实现</p>
+<h2 id="15-将一个类声明为Spring的bean的注解有哪些？"><a href="#15-将一个类声明为Spring的bean的注解有哪些？" class="headerlink" title="15.将一个类声明为Spring的bean的注解有哪些？"></a>15.将一个类声明为Spring的bean的注解有哪些？</h2><p>我们一般使用@Autowired注解去自动装配bean。而想要把一个类标识为可以用@Autowired注解自动装配的bean，可以采用以下的注解实现：</p>
+<p>1.@Component注解。通用的注解，可标注任意类为Spring组件。如果一个Bean不知道属于哪一个层，可以使用@Component注解标注。</p>
+<p>2.@Repository注解。对应持久层，即Dao层，主要用于数据库相关操作。</p>
+<p>3.@Service注解。对应服务层，即Service层，主要涉及一些复杂的逻辑，需要用到Dao层（注入）。</p>
+<p>4.@Controller注解。对应Spring MVC的控制层，即Controller层，主要用于接受用户请求并调用Service层的方法返回数据给前端页面</p>
+<h2 id="16-Spring事务管理的方式有几种？"><a href="#16-Spring事务管理的方式有几种？" class="headerlink" title="16.Spring事务管理的方式有几种？"></a>16.Spring事务管理的方式有几种？</h2><p>1.编程式事务：在代码中硬编码（不推荐使用）。</p>
+<p>2.声明式事务：在配置文件中配置（推荐使用），分为基于XML的声明式事务和基于注解的声明式事务</p>
+<h2 id="17-Bean-Factory和ApplicationContext有什么区别？"><a href="#17-Bean-Factory和ApplicationContext有什么区别？" class="headerlink" title="17.Bean Factory和ApplicationContext有什么区别？"></a>17.Bean Factory和ApplicationContext有什么区别？</h2><p>ApplicationContex提供了一种解析文本消息的方法，一种加载文件资源（如图像）的通用方法，它们可以将事件发布到注册为侦听器的bean。此外，可以在应用程序上下文中以声明方式处理容器中的容器或容器上的操作，这些操作必须以编程方式与Bean Factory一起处理。ApplicationContex实现MessageSource，一个用于获取本地化消息的接口，实际的实现是可插入的</p>
+<h2 id="18-如何定义bean的范围？"><a href="#18-如何定义bean的范围？" class="headerlink" title="18.如何定义bean的范围？"></a>18.如何定义bean的范围？</h2><p>在Spring中定义一个时，我们也可以为bean声明一个范围。它可以通过bean定义中的scope属性定义。例如，当Spring每次需要生成一个新的bean实例时，bean’sscope属性就是原型。另一方面，当每次需要Spring都必须返回相同的bean实例时，bean scope属性必须设置为singleton</p>
+<h2 id="19-可以通过多少种方式完成依赖注入"><a href="#19-可以通过多少种方式完成依赖注入" class="headerlink" title="19.可以通过多少种方式完成依赖注入"></a>19.可以通过多少种方式完成依赖注入</h2><p>通常，依赖注入可以通过三种方式完成，即：</p>
+<ul>
+<li>构造函数注入</li>
+<li>setter 注入</li>
+<li>接口注入</li>
+</ul>
+<h1 id="springboot"><a href="#springboot" class="headerlink" title="springboot"></a>springboot</h1><h2 id="1-什么是SpringBoot？"><a href="#1-什么是SpringBoot？" class="headerlink" title="1.什么是SpringBoot？"></a>1.什么是SpringBoot？</h2><p>Spring Boot 是 Spring 开源组织下的子项目，是 Spring 组件一站式解决方案，主要是简化了使用 Spring 的难度，简省了繁重的配置，提供了各种启动器，开发者能快速上手。</p>
+<ul>
+<li>用来简化Spring应用的初始搭建以及开发过程，使用特定的方式来进行配置</li>
+<li>创建独立的Spring引用程序main方法运行</li>
+<li>嵌入的tomcat无需部署war文件</li>
+<li>简化maven配置</li>
+<li>自动配置Spring添加对应的功能starter自动化配置</li>
+<li>SpringBoot来简化Spring应用开发，约定大于配置，去繁化简</li>
+</ul>
+<h1 id="Redis问题"><a href="#Redis问题" class="headerlink" title="Redis问题"></a>Redis问题</h1><h2 id="1、什么是redis？"><a href="#1、什么是redis？" class="headerlink" title="1、什么是redis？"></a>1、什么是redis？</h2><p><code>Redis</code>(Remote Dictionary Server) 是一个使用 C 语言编写的，开源的高性能非关系型（NoSQL）的键值对数据库。<code>Redis</code> 可以存储键和五种不同类型的值之间的映射。键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。<code>redis</code>每秒可以处理超过 <strong>10万次</strong>读写操作，是已知性能最快的Key-Value DB。另外<code>redis</code>也常用来做分布式锁。</p>
+<h2 id="1-1、redis的优缺点？（招银网络科技）"><a href="#1-1、redis的优缺点？（招银网络科技）" class="headerlink" title="1.1、redis的优缺点？（招银网络科技）"></a>1.1、redis的优缺点？（招银网络科技）</h2><p><strong>缺点：</strong></p>
+<p>由于是内存数据库，所以，单台机器，存储的数据量，跟机器本身的内存大小。虽然Redis本身有key过期策略，但是还是需要提前预估和节约内存。如果内存增长过快，需要定期删除数据。</p>
+<p>如果进行完整重同步，由于需要生成rdb文件，并进行传输，会占用主机的CPU，并会消耗现网的带宽。不过redis2.8版本，已经有部分重同步的功能，但是还是有可能有完整重同步的。比如，新上线的备机。</p>
+<p>修改配置文件，进行重启，将硬盘中的数据加载进内存，时间比较久。在这个过程中，redis不能提供服务。</p>
+<h2 id="2、为什么要用缓存？（美团）"><a href="#2、为什么要用缓存？（美团）" class="headerlink" title="2、为什么要用缓存？（美团）"></a>2、为什么要用缓存？（美团）</h2><p>因为<code>redis</code>的高性能与高并发。</p>
+<h2 id="3、为什么redis单线程还支持高并发？（美团）"><a href="#3、为什么redis单线程还支持高并发？（美团）" class="headerlink" title="3、为什么redis单线程还支持高并发？（美团）"></a>3、为什么redis单线程还支持高并发？（美团）</h2><p>因为<code>Redis</code>是基于内存的操作，CPU不是<code>Redis</code>的瓶颈，<code>Redis</code>的瓶颈最有可能是机器内存的大小或者网络带宽。既然单线程容易实现而且省去了很多上下文切换线程的时间，而且CPU不会成为瓶颈，那就顺理成章地采用单线程的方案了。</p>
+<p><code>redis</code>使用**<code>epoll</code>多路I/O复用技术**，单个线程可以处理大量的并发连接。<code>epoll</code>是一种高效的多路复用技术。</p>
+<h2 id="4、为什么要用redis而不是map或者guava做缓存？（shopee）"><a href="#4、为什么要用redis而不是map或者guava做缓存？（shopee）" class="headerlink" title="4、为什么要用redis而不是map或者guava做缓存？（shopee）"></a>4、为什么要用redis而不是map或者guava做缓存？（shopee）</h2><p>缓存分为本地缓存和分布式缓存。以 Java 为例，使用自带的 map 或者 guava 实现的是本地缓存，最主要的特点是轻量以及快速，生命周期随着 <code>jvm</code> 的销毁而结束，并且在多实例的情况下，每个实例都需要各自保存一份缓存，<strong>缓存不具有一致性</strong>。</p>
+<p>使用 <code>redis</code> 或 <code>memcached</code> 之类的称为分布式缓存，在多实例的情况下，各实例共用一份缓存数据，缓存具有一致性。缺点是需要保持 <code>redis</code> 或 <code>memcached</code>服务的高可用，整个程序架构上较为复杂。</p>
+<h2 id="5、Redis数据结构？string与hash的区别？（美团）（字节）"><a href="#5、Redis数据结构？string与hash的区别？（美团）（字节）" class="headerlink" title="5、Redis数据结构？string与hash的区别？（美团）（字节）"></a>5、Redis数据结构？string与hash的区别？（美团）（字节）</h2><p>string、list、hash、set、zset。</p>
+<p>String多应用于简单的键值对缓存；hash储存结构化数据，比如一个对象。</p>
+<h2 id="6、redis应用场景？"><a href="#6、redis应用场景？" class="headerlink" title="6、redis应用场景？"></a>6、redis应用场景？</h2><p>计数器、分布式会话缓存、分布式锁实现等等。</p>
+<h2 id="7、跳跃表（skipList）？（字节）（shopee）"><a href="#7、跳跃表（skipList）？（字节）（shopee）" class="headerlink" title="7、跳跃表（skipList）？（字节）（shopee）"></a>7、跳跃表（skipList）？（字节）（shopee）</h2><p><code>SkipList</code>是在<strong>有序链表</strong>的基础上进行了扩展，解决了有序链表结构查找特定值困难的问题，查找特定值的时间复杂度为<code>O(logn)</code>，他是一种可以代替平衡树的数据结构。</p>
+<p>它的效率和红黑树以及 AVL 树不相上下，但跳表的原理相当简单，只要你能熟练操作链表，就能轻松实现一个 <code>SkipList</code>。</p>
+<h2 id="7、redis持久化机制？（有赞）（跟谁学）（滴滴）"><a href="#7、redis持久化机制？（有赞）（跟谁学）（滴滴）" class="headerlink" title="7、redis持久化机制？（有赞）（跟谁学）（滴滴）"></a>7、redis持久化机制？（有赞）（跟谁学）（滴滴）</h2><ol>
+<li><strong>RDB</strong>：开启一个新的线程来完成往<code>rdb</code>文件中的写操作。主线程继续处理命令。<strong>使用单独的子线程来进行持久化</strong>。主线程不进行任何的IO操作。保证<code>redis</code>的高性能。缺点是可能会丢失一些数据。</li>
+<li><strong>AOF</strong> ：AOF持久化(即Append Only File持久化)，则是将<code>Redis</code>执行的每次写命令记录到单独的日志文件中，当重启<code>Redis</code>会重新将持久化的日志中文件恢复数据。AOF有一个<strong>重写模式</strong>，当日志文件过大时可以对其进行压缩。AOF往往效率低于RDB一些。</li>
+</ol>
+<p><strong>AOF的追写策略</strong>：建议使用每秒同步一次<code>（everysec）</code>策略。</p>
+<p><strong>rewrite机制</strong>：rewrite会记录上次重写时AOF文件的大小，当AOF文件是上一次大小的二倍且大于64M时触发。</p>
+<h2 id="8、如何选择合适的持久化方式？"><a href="#8、如何选择合适的持久化方式？" class="headerlink" title="8、如何选择合适的持久化方式？"></a>8、如何选择合适的持久化方式？</h2><p>一般来说两者配合使用效果最佳，当 <code>Redis</code> 重启的时候会优先载入AOF文件来恢复原始的数据，因为在通常情况下AOF文件保存的数据集要比RDB文件保存的数据集要完整。</p>
+<p>如果可以容忍数分钟内的数据丢失，可以只选用RDB方式，还比较快。</p>
+<p>不推荐只使用AOF方式。</p>
+<h2 id="9、过期键的删除策略？（美团）"><a href="#9、过期键的删除策略？（美团）" class="headerlink" title="9、过期键的删除策略？（美团）"></a>9、过期键的删除策略？（美团）</h2><ul>
+<li><strong>定时过期</strong>：每个设置过期时间的key都需要创建一个<strong>定时器</strong>，到过期时间就会立即清除。该策略可以立即清除过期的数据，对内存很友好；但是会占用大量的CPU资源去处理过期的数据，从而影响缓存的响应时间和吞吐量。</li>
+<li><strong>惰性过期</strong>：只有当访问一个key时，才会判断该key是否已过期，过期则清除。该策略可以最大化地节省CPU资源，却对内存非常不友好。极端情况可能出现大量的过期key没有再次被访问，从而不会被清除，占用大量内存。</li>
+</ul>
+<h2 id="10、redis设置键的过期时间以及永不过期命令是什么？"><a href="#10、redis设置键的过期时间以及永不过期命令是什么？" class="headerlink" title="10、redis设置键的过期时间以及永不过期命令是什么？"></a>10、redis设置键的过期时间以及永不过期命令是什么？</h2><p>expire设置过期时间</p>
+<p>persist设置键永不过期，多用于热点数据。</p>
+<h2 id="11、redis的内存淘汰策略有哪些？"><a href="#11、redis的内存淘汰策略有哪些？" class="headerlink" title="11、redis的内存淘汰策略有哪些？"></a>11、redis的内存淘汰策略有哪些？</h2><ul>
+<li><code>noeviction</code>：当内存不足以容纳新写入数据时，新写入操作会报错。</li>
+<li><code>allkeys-lru</code>：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。（这个是<strong>最常用</strong>的）</li>
+<li><code>allkeys-random</code>：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。</li>
+<li><code>volatile-lru</code>：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的key。</li>
+<li><code>volatile-random</code>：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个key。</li>
+<li><code>volatile-ttl</code>：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的key优先移除</li>
+</ul>
+<h2 id="12、redis线程模型？（shopee）"><a href="#12、redis线程模型？（shopee）" class="headerlink" title="12、redis线程模型？（shopee）"></a>12、redis线程模型？（shopee）</h2><p><code>redis</code>以<strong>单线程</strong>模式运行，但是通过使用 I/O 多路复用来监听多个套接字（socket）， 文件事件处理器既实现了高性能的网络通信模型， 又可以很好地与 <code>redis</code> 服务器中其他同样以单线程方式运行的模块进行对接， 这保持了 <code>Redis</code> 内部单线程设计的简单性。</p>
+<h2 id="13、redis主从复制？（shopee）"><a href="#13、redis主从复制？（shopee）" class="headerlink" title="13、redis主从复制？（shopee）"></a>13、redis主从复制？（shopee）</h2><p><strong>主从连接过程：</strong></p>
+<ol>
+<li>从服务器连接主服务器，发送SYNC命令。主服务器接收到SYNC命名后，开始执行<strong>BGSAVE</strong>命令生成<strong>RDB文件</strong>并使用缓冲区记录此后执行的所有写命令。</li>
+<li>主服务器创建<strong>快照文件</strong>，发送给从服务器，并在发送期间使用缓冲区记录执行的写命令。快照文件发送完毕之后，开始向从服务器发送存储在缓冲区中的写命令；</li>
+<li>从服务器丢弃所有旧数据，载入主服务器发来的快照文件，之后从服务器开始接受主服务器发来的写命令；</li>
+<li>主服务器每执行一次写命令，就向从服务器发送相同的写命令。</li>
+<li>一旦主机挂了，从机会原地待命，但是使用 <strong><code>salveof no one</code></strong> 命令会<strong>使从机反仆为主</strong>。</li>
+</ol>
+<p><strong>作用：</strong>数据冗余、故障恢复、负载均衡、高可用的基石。使用slave of 命令将某一台redis变为从机。</p>
+<h2 id="14、redis哨兵机制？（shopee）（滴滴）（新浪）"><a href="#14、redis哨兵机制？（shopee）（滴滴）（新浪）" class="headerlink" title="14、redis哨兵机制？（shopee）（滴滴）（新浪）"></a>14、redis哨兵机制？（shopee）（滴滴）（新浪）</h2><ol>
+<li>Sentinel(哨兵) <strong>进程</strong>是用于监控 <code>Redis</code> 集群中 Master 主服务器工作的状态</li>
+<li>在 Master 主服务器发生故障的时候，可以实现 Master 和 Slave 服务器的切换，保证系统的高可用（High Availability）</li>
+<li>为了防止<code>脑裂</code>发生，节点个数一般配置为 2n+1。</li>
+</ol>
+<h2 id="15、redis集群？redis-的-key-是如何寻址的？分布式寻址都有哪些算法？了解一致性-hash-算法吗？（滴滴）"><a href="#15、redis集群？redis-的-key-是如何寻址的？分布式寻址都有哪些算法？了解一致性-hash-算法吗？（滴滴）" class="headerlink" title="15、redis集群？redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？（滴滴）"></a>15、redis集群？redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？（滴滴）</h2><p><strong>为什么有了哨兵模式还需要集群？</strong></p>
+<p><code>redis</code>的哨兵模式基本已经可以实现高可用，读写分离 ，但是在这种模式下每台<code>redis</code>服务器都存储相同的数据，很<strong>浪费内存</strong>，所以在redis3.0上加入了cluster模式，实现的<code>redis</code>的<strong>分布式存储</strong>，也就是说每台<code>redis</code>节点上存储不同的内容。</p>
+<p><strong>数据分配策略？</strong></p>
+<p>采用一种叫做<code>哈希槽</code> (hash slot)的方式来分配数据，<code>redis cluster</code> 默认分配了 16384 个slot。将key的 <code>hashCode % 16384</code>得出数据的槽位。</p>
+<p><strong>分布式寻址算法</strong></p>
+<ol>
+<li>hash 算法（大量缓存重建）</li>
+<li>一致性 hash 算法（自动缓存迁移）+ 虚拟节点（自动负载均衡）</li>
+<li><code>redis</code> cluster（集群） 的 hash slot （槽）算法</li>
+</ol>
+<h2 id="15-2、一致性hash说一下-（跟谁学）"><a href="#15-2、一致性hash说一下-（跟谁学）" class="headerlink" title="15.2、一致性hash说一下?（跟谁学）"></a>15.2、一致性hash说一下?（跟谁学）</h2><p>首先面对海量数据，一台<code>redis</code>肯定是不够用的，一致性hash算法主要是用来将数据按照一定的算法规律存储到指定的<code>redis</code>服务器中。</p>
+<p>常规的hash算法会导致一个问题：当<code>redis</code>的实例个数变了那么所有的hash值都需要重新计算，这是非常耗时的。一致性hash的出现解决了这种问题。</p>
+<ol>
+<li>hash(IP) % 2^32 -1 求出<code>redis</code>主机在圆环中的位置，</li>
+<li>使用hash(key) % 2^32-1求出数据在环上的位置，从该位置顺时针查找到的第一个主机即该数据存储的位置。</li>
+<li>这样一来及有一个标准化的计算过程了。</li>
+</ol>
+<h2 id="16、什么是RedLock？"><a href="#16、什么是RedLock？" class="headerlink" title="16、什么是RedLock？"></a>16、什么是RedLock？</h2><p><code>Redis</code> 官方站提出了一种权威的基于 <code>Redis</code> 实现分布式锁的方式名叫 *<code>Redlock</code>*，此种方式比原先的单节点的方法更安全。它可以保证以下特性：</p>
+<ol>
+<li>安全特性：互斥访问，即永远只有一个 client 能拿到锁</li>
+<li>避免死锁：最终 client 都可能拿到锁，不会出现死锁的情况，即使原本锁住某资源的 client crash 了或者出现了网络分区</li>
+<li>容错性：只要大部分 <code>Redis</code> 节点存活就可以正常提供服务</li>
+</ol>
+<h2 id="17、缓存雪崩、击穿、穿透？（美团）（滴滴）"><a href="#17、缓存雪崩、击穿、穿透？（美团）（滴滴）" class="headerlink" title="17、缓存雪崩、击穿、穿透？（美团）（滴滴）"></a>17、缓存雪崩、击穿、穿透？（美团）（滴滴）</h2><p>穿透：</p>
+<p>（1）  <strong>对空值缓存：</strong>如果一个查询返回的数据为空（不管是数据是否不存在），我们仍然把这个空结果（null）进行缓存，设置空结果的过期时间会很短，最长不超过五分钟</p>
+<p>（2）  <strong>设置可访问的名单（白名单）：</strong></p>
+<p>使用bitmaps类型定义一个可以访问的名单，名单id作为bitmaps的偏移量，每次访问和bitmap里面的id进行比较，如果访问id不在bitmaps里面，进行拦截，不允许访问。</p>
+<p>（3）  <strong>采用布隆过滤器</strong>：(布隆过滤器（Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制向量(位图)和一系列随机映射函数（哈希函数）。</p>
+<p>布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。)</p>
+<p>将所有可能存在的数据哈希到一个足够大的bitmaps中，一个一定不存在的数据会被 这个bitmaps拦截掉，从而避免了对底层存储系统的查询压力。</p>
+<p><strong>进行实时监控：</strong>当发现Redis的命中率开始急速降低，需要排查访问对象和访问的数据，和运维人员配合，可以设置黑名单限制服务</p>
+<p>击穿：</p>
+<p><strong>（1****）预先设置热门数据：</strong>在redis高峰访问之前，把一些热门数据提前存入到redis里面，加大这些热门数据key的时长</p>
+<p><strong>（2****）实时调整：</strong>现场监控哪些数据热门，实时调整key的过期时长</p>
+<p><strong>（3****）使用锁：</strong></p>
+<p>（1）  就是在缓存失效的时候（判断拿出来的值为空），不是立即去load db。</p>
+<p>（2）  先使用缓存工具的某些带成功操作返回值的操作（比如Redis的SETNX）去set一个mutex key</p>
+<p>（3）  当操作返回成功时，再进行load db的操作，并回设缓存,最后删除mutex key；</p>
+<p>（4）  当操作返回失败，证明有线程在load db，当前线程睡眠一段时间再重试整个get缓存的方法。</p>
+<p>雪崩：</p>
+<p><strong>（1）</strong>  <strong>构建多级缓存架构：</strong>nginx缓存 + redis缓存 +其他缓存（ehcache等）</p>
+<p><strong>（2）</strong>  <strong>使用锁或队列：</strong></p>
+<p>用加锁或者队列的方式保证来保证不会有大量的线程对数据库一次性进行读写，从而避免失效时大量的并发请求落到底层存储系统上。不适用高并发情况</p>
+<p><strong>（3）</strong>  <strong>设置过期标志更新缓存：</strong></p>
+<p>记录缓存数据是否过期（设置提前量），如果过期会触发通知另外的线程在后台去更新实际key的缓存。</p>
+<p><strong>（4）</strong>  <strong>将缓存失效时间分散开：</strong></p>
+<p>比如我们可以在原有的失效时间基础上增加一个随机值，比如1-5分钟随机，这样每一个缓存的过期时间的重复率就会降低，就很难引发集体失效的事件。</p>
+<h2 id="18、缓存预热？（百度）"><a href="#18、缓存预热？（百度）" class="headerlink" title="18、缓存预热？（百度）"></a>18、缓存预热？（百度）</h2><p>秒杀开始前，商品数据以及库存都预热到redis。</p>
+<h2 id="19、Redis支持的客户端？"><a href="#19、Redis支持的客户端？" class="headerlink" title="19、Redis支持的客户端？"></a>19、Redis支持的客户端？</h2><p><code>Redisson</code>、<code>jedis</code>、<code>lettuce</code>等等，官方推荐使用<code>Redisson</code>。</p>
+<h2 id="20、Jedis与Redisson对比有什么优缺点？（美团）"><a href="#20、Jedis与Redisson对比有什么优缺点？（美团）" class="headerlink" title="20、Jedis与Redisson对比有什么优缺点？（美团）"></a>20、Jedis与Redisson对比有什么优缺点？（美团）</h2><p><code>Jedis</code>是<code>Redis</code>的Java实现的客户端，其API提供了比较全面的<code>Redis</code>命令的支持；<code>Redisson</code>实现了<strong>分布式和可扩展</strong>的Java数据结构，和<code>Jedis</code>相比，功能较为简单，不支持字符串操作，不支持排序、事务、管道、分区等<code>Redis</code>特性。<code>Redisson</code>的宗旨是促进使用者对<code>Redis</code>的关注分离，从而让使用者能够将精力更集中地放在处理业务逻辑上。</p>
+<p><code>Redisson</code>解决了锁的自动续期问题，只要业务还在执行，<code>Redisson</code>就会为锁自动续期。</p>
+<h2 id="21、redis事务？（有赞）（跟谁学）"><a href="#21、redis事务？（有赞）（跟谁学）" class="headerlink" title="21、redis事务？（有赞）（跟谁学）"></a>21、redis事务？（有赞）（跟谁学）</h2><p><code>Redis</code> 事务的本质是通过**MULTI、EXEC、WATCH、discard **等一组命令的集合。事务支持一次执行多个命令，一个事务中所有命令都会被序列化。在事务执行过程，会按照顺序串行化执行队列中的命令，其他客户端提交的命令请求不会插入到事务执行命令序列中。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ada">multi : 标记一个事务块的开始（ <span class="hljs-type">queued</span> ）<br>exec : 执行所有事务块的命令 （ 一旦执行<span class="hljs-type">exec</span>后，之前加的监控锁都会被取消掉 ）　<br>discard : 取消事务，放弃事务块中的所有命令<br>unwatch : 取消<span class="hljs-type">watch</span>对所有key的监控<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>如果一个事务中的命令出现错误，那么所有命令都不会执行。</li>
+<li><code>Redis</code>事务<strong>不保证多条指令的原子性</strong>。</li>
+<li>基于Lua脚本可以保证脚本中的指令一次性按顺序执行。</li>
+</ol>
+<h2 id="22、redis与memcached的区别？（平安科技）"><a href="#22、redis与memcached的区别？（平安科技）" class="headerlink" title="22、redis与memcached的区别？（平安科技）"></a>22、redis与memcached的区别？（平安科技）</h2><ol>
+<li><strong>支持存储的数据类型</strong>：<code>redis</code>支持五种类型。<code>memcached</code>支持文本类型与二进制类型。</li>
+<li><strong>网络IO模型</strong>：<code>redis</code>是单线程的多路IO复用模型，<code>memcached</code>是多线程的非阻塞IO模式。</li>
+<li><strong><code>redis</code>支持数据持久化</strong>，<code>memcached</code>不支持</li>
+<li>使用场景：<code>redis</code>适用于复杂的数据结构环境，有持久化需求。<code>memcached</code>适用于纯&lt;k,v&gt;且数据量矩大的环境下。</li>
+</ol>
+<h2 id="23、redis常见的性能问题与对应的解决方案？（新浪）（shopee）"><a href="#23、redis常见的性能问题与对应的解决方案？（新浪）（shopee）" class="headerlink" title="23、redis常见的性能问题与对应的解决方案？（新浪）（shopee）"></a>23、redis常见的性能问题与对应的解决方案？（新浪）（shopee）</h2><ol>
+<li><strong>Master最好不要做任何持久化工作</strong>，包括内存快照和AOF日志文件，特别是不要启用内存快照做持久化。</li>
+<li><strong>如果数据比较关键，某个Slave开启AOF备份数据，策略为每秒同步一次</strong>。</li>
+<li>为了主从复制的速度和连接的稳定性，Slave和Master最好在同一个局域网内。</li>
+<li>尽量避免在压力较大的主库上增加从库</li>
+<li>Master调用BGREWRITEAOF重写AOF文件，AOF在重写的时候会占大量的CPU和内存资源，导致服务load过高，出现短暂服务暂停现象。</li>
+<li>为了Master的稳定性，主从复制不要用图状结构，用单向链表结构更稳定，即主从关系为：Master&lt;–Slave1&lt;–Slave2&lt;–Slave3…，这样的结构也方便解决单点故障问题，实现Slave对Master的替换，也即，如果Master挂了，可以立马启用Slave1做Master，其他不变。</li>
+</ol>
+<h2 id="24、假如Redis有一亿个key，其中10万个key以某个固定的已知前缀开头，如何把他们都找出来？（字节）"><a href="#24、假如Redis有一亿个key，其中10万个key以某个固定的已知前缀开头，如何把他们都找出来？（字节）" class="headerlink" title="24、假如Redis有一亿个key，其中10万个key以某个固定的已知前缀开头，如何把他们都找出来？（字节）"></a>24、假如Redis有一亿个key，其中10万个key以某个固定的已知前缀开头，如何把他们都找出来？（字节）</h2><p><strong>keys</strong>指令可以扫描得出指定模式的key列表</p>
+<p>但是问题是由于<code>redis</code>是单线程的，<strong>keys指令会导致线程阻塞一段时间</strong>，此时的线上服务会有短暂停顿直到keys指令执行完毕。</p>
+<p>使用<strong>scan</strong>指令可以做到<strong>无阻塞</strong>的提取出指定模式的key列表。但有一定的重复几率。再做一遍去重就🆗。</p>
+<h2 id="25、布隆过滤器了解吗？（滴滴）（字节）"><a href="#25、布隆过滤器了解吗？（滴滴）（字节）" class="headerlink" title="25、布隆过滤器了解吗？（滴滴）（字节）"></a>25、布隆过滤器了解吗？（滴滴）（字节）</h2><p><strong>解决缓存穿透的问题。</strong></p>
+<p>是<code>redis</code>中的一种数据结构，它将MySQL数据库中所有可能存在的数据都缓存到布隆过滤器中。当攻击者访问不存在的数据时<strong>迅速返回</strong>避免请求打到数据库上导致数据库宕机问题。</p>
+<p><strong>原理：</strong></p>
+<p>Bloom Filter 是一种空间效率很高的<strong>随机数据结构</strong>，Bloom filter 可以看做是对 bit-map 的扩展。当一个元素被加入集合时，通过 <strong>K 个 Hash 函数</strong>将这个元素映射成一个位阵列（Bit array）中的 K 个点，把它们置为 1。 检索时，我们只要看看这些点是不是都是 1 就（大约）知道集合中有没有它。 <strong>值得注意的是</strong>：如果这些点有任何一个 0，则被检索元素一定不在。 如果都是 1，则被检索元素很可能在。</p>
+<h2 id="25-1、布隆过滤器的优、缺点？"><a href="#25-1、布隆过滤器的优、缺点？" class="headerlink" title="25.1、布隆过滤器的优、缺点？"></a>25.1、布隆过滤器的优、缺点？</h2><p><strong>二、优点</strong></p>
+<p><strong>空间效率</strong>和<strong>查询效率</strong>都远远超过一般的算法，布隆过滤器存储空间和插入 / 查询时间都是常数O(k)。 另外, 散列函数相互之间没有关系，方便由硬件并行实现。 <strong>布隆过滤器不需要存储元素本身，在某些对保密要求非常严格的场合有优势。</strong></p>
+<p><strong>三、缺点</strong></p>
+<p>布隆过滤器的缺点和优点一样明显。 <strong>误算率</strong>是其中之一。随着存入的元素数量增加，误算率随之增加。但是如果元素数量太少，则使用散列表就可以。 另外，一般情况下不能从布隆过滤器中删除元素. 我们很容易想到把位数组变成整数数组，每插入一个元素相应的计数器加 1, 这样删除元素时将计数器减掉就可以了。然而要保证安全地删除元素并非如此简单。首先我们必须保证删除的元素的确在布隆过滤器里面。这一点单凭这个过滤器是无法保证的。另外计数器回绕也会造成问题。</p>
+<h2 id="26、redis分布式锁实现原理？（美团）（字节）"><a href="#26、redis分布式锁实现原理？（美团）（字节）" class="headerlink" title="26、redis分布式锁实现原理？（美团）（字节）"></a>26、redis分布式锁实现原理？（美团）（字节）</h2><ol>
+<li>一个线程尝试去获取锁lock，通过<code>setnx</code>(lock，<code>uuid</code>，过期时间)。如果lock不存在就会设置成功，返回true，否则返回false。</li>
+<li>获取分布式锁成功之后，需要使用<code>expire</code>命令设置锁有效期，防止死锁。</li>
+<li>执行相关业务逻辑</li>
+<li>释放锁，首先获取到lock对应的value，将此value与<code>uuid</code>对比，如果相同的话执行delete指令删除锁。注意！上述两个步骤需要保证<strong>原子性</strong>。需要使用<code>lua</code>脚本。</li>
+</ol>
+<h2 id="27、Redis针对数据结构做了哪些优化？（美团）"><a href="#27、Redis针对数据结构做了哪些优化？（美团）" class="headerlink" title="27、Redis针对数据结构做了哪些优化？（美团）"></a>27、Redis针对数据结构做了哪些优化？（美团）</h2><p>redis数据模型：</p>
+<p>在Redis中，会给每一个key-value键值对分配一个字典实体，就是<code>dicEntry</code>。<code>dicEntry</code>包含三部分： <strong>key的指针、val的指针、next指针</strong>，next指针指向下一个dicteEntry形成链表，这个next指针可以将多个哈希值相同的键值对链接在一起，<strong>通过链地址法来解决哈希冲突的问题</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/lokles/Web-Development-Interview-With-Java/blob/main/images/redis%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png"><img src="https://github.com/lokles/Web-Development-Interview-With-Java/raw/main/images/redis%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<ul>
+<li><strong>sds</strong> ：<strong>Simple Dynamic String</strong>，简单动态字符串，存储字符串数据。</li>
+<li><strong>redisObject</strong>：Redis的5种常用类型都是以RedisObject来存储的，redisObject中的<strong>type</strong>字段指明了值的数据类型（也就是5种基本类型)。<strong>ptr</strong>字段指向对象所在的地址。</li>
+</ul>
+<p>1、String： sds实现，自定义类型加入了长度，每次获取字符串长度的时间复杂度就是O(1)，而利用len和free属性对追加字符串进行优化，也可以降低重新分配内存的次数。</p>
+<p>2、Hash： zip-list 或者 hash-table（数组+链表）扩容机制采用渐进式扩容。</p>
+<p>3、Set： int-Set</p>
+<p>4、Zset： skip-list</p>
+<p>4、List： zip-list -&gt; linked-list -&gt; quick-list （前两者合并之后创建了快速链表）</p>
+<h2 id="28、redis是如何保证原子操作的？（美团）（新浪）"><a href="#28、redis是如何保证原子操作的？（美团）（新浪）" class="headerlink" title="28、redis是如何保证原子操作的？（美团）（新浪）"></a>28、redis是如何保证原子操作的？（美团）（新浪）</h2><p>Redis是单线程的。在单线程程序中，任务一个一个地做，必须做完一个任务后，才会去做另一个任务。因而redis的操作保证了原子性。</p>
+<h2 id="29、什么命令会触发写RDB文件？（跟谁学）"><a href="#29、什么命令会触发写RDB文件？（跟谁学）" class="headerlink" title="29、什么命令会触发写RDB文件？（跟谁学）"></a>29、什么命令会触发写RDB文件？（跟谁学）</h2><p>BGSAVE：后台处理，不会阻塞工作线程。</p>
+<p>SAVE：会导致工作线程的阻塞。</p>
+<h2 id="30、知道大Key问题吗？（滴滴）"><a href="#30、知道大Key问题吗？（滴滴）" class="headerlink" title="30、知道大Key问题吗？（滴滴）"></a>30、知道大Key问题吗？（滴滴）</h2><p>由于Redis主线程为单线程模型，大key也会带来一些问题，如：</p>
+<ol>
+<li>集群模式在slot分片均匀情况下，会出现数据和查询倾斜情况，部分有大key的Redis节点占用内存多，QPS高。</li>
+<li>大key相关的删除或者自动过期时，会出现qps突降或者突升的情况，极端情况下，会造成主从复制异常，Redis服务阻塞无法响应请求。</li>
+</ol>
+<p><strong>redis4.0之前的大key的发现与删除方法</strong></p>
+<ul>
+<li><code>redis-rdb-tools</code>工具。<code>redis</code>实例上执行<code>bgsave</code>，然后对生成的<code>rdb</code>文件进行分析，找到其中的大KEY。</li>
+<li><code>redis-cli --bigkeys</code>命令。可以找到某个实例5种数据类型(String、hash、list、set、zset)的最大key。</li>
+</ul>
+<p>由于在redis4.0前，没有<strong>lazy free</strong>机制；针对扫描出来的大key，DBA只能通过hscan、sscan、zscan方式渐进删除若干个元素，但面对过期键删除的场景，这种取巧的删除就无能为力。我们只能祈祷自动清理过期key刚好在系统低峰时，降低对业务的影响。</p>
+<p><strong>Redis 4.0之后的大key的发现与删除方法</strong></p>
+<p>Redis 4.0引入了memory usage命令和lazy free机制，不管是对大key的发现，还是解决大key删除或者过期造成的阻塞问题都有明显的提升</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2022/08/13/java面试题整理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/13/java%E5%85%AB%E8%82%A1%E6%96%87/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/13/hot100/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

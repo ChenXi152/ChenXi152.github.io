@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="谷粒学院遇到的问题 1.前后端登录出现No ‘Access-Control-Allow-Origin 跨域问题 如果通过一个地址访问另一个地址，这个过程中有三个地方不一样，就会出现跨域 1.访问协议 http https 2.ip地址 192.168.101.1     124.220.160.3 3.端口号 8001 9528 解决方式：在后端接口controller添加注解 1@CrossOr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/07/24/%E8%B0%B7%E7%B2%92%E5%AD%A6%E9%99%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="谷粒学院遇到的问题 1.前后端登录出现No ‘Access-Control-Allow-Origin 跨域问题 如果通过一个地址访问另一个地址，这个过程中有三个地方不一样，就会出现跨域 1.访问协议 http https 2.ip地址 192.168.101.1     124.220.160.3 3.端口号 8001 9528 解决方式：在后端接口controller添加注解 1@CrossOr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220614141018387.png">
+<meta property="og:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220614141102648.png">
+<meta property="og:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220614141210265.png">
+<meta property="og:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220614213435572.png">
+<meta property="article:published_time" content="2022-07-24T09:16:02.546Z">
+<meta property="article:modified_time" content="2022-08-10T15:12:39.383Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/ZhangXL/AppData/Roaming/Typora/typora-user-images/image-20220614141018387.png">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-24 17:16" pubdate>
+          2022年7月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="谷粒学院"><a href="#谷粒学院" class="headerlink" title="谷粒学院"></a>谷粒学院</h1><p>遇到的问题</p>
+<p>1.前后端登录出现No ‘Access-Control-Allow-Origin 跨域问题</p>
+<p>如果通过一个地址访问另一个地址，这个过程中有三个地方不一样，就会出现跨域</p>
+<p>1.访问协议 http https</p>
+<p>2.ip地址 192.168.101.1     124.220.160.3</p>
+<p>3.端口号 8001 9528</p>
+<p>解决方式：在后端接口controller添加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@CrossOrigin</span> <span class="hljs-comment">// 解决跨域问题</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>2.后端传参给前端问题，什么时候用data什么时候不用？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//删除讲师</span><br>   <span class="hljs-title function_">deleteTeacherId</span>(<span class="hljs-params">id</span>)&#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-title function_">request</span>(&#123;<br>           <span class="hljs-attr">url</span>: <span class="hljs-string">`/eduservice/teacher/<span class="hljs-subst">$&#123;id&#125;</span>`</span>,<br>           <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;delete&#x27;</span>,<br>         &#125;)<br>   &#125;,<br>   <span class="hljs-comment">//添加讲师</span><br>   <span class="hljs-title function_">addTeacher</span>(<span class="hljs-params">teacher</span>)&#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-title function_">request</span>(&#123;<br>           <span class="hljs-attr">url</span>: <span class="hljs-string">`/eduservice/teacher/addTeacher`</span>,<br>           <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>           <span class="hljs-attr">data</span>: teacher<br>         &#125;)<br>   &#125;,<br>   <span class="hljs-comment">//根据讲师id回显信息</span><br>   <span class="hljs-title function_">getTeacherInfo</span>(<span class="hljs-params">id</span>)&#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-title function_">request</span>(&#123;<br>           <span class="hljs-attr">url</span>: <span class="hljs-string">`/eduservice/teacher/getTeacher/<span class="hljs-subst">$&#123;id&#125;</span>`</span>,<br>           <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,<br>         &#125;)<br>   &#125;    <br></code></pre></td></tr></table></figure>
+
+<p>以上为删除 添加 回显</p>
+<p>可以看出来只有添加讲师有data传数据</p>
+<p>再看后端接口怎么写的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ApiOperation(value = &quot;逻辑删除讲师&quot;)</span><br><span class="hljs-meta">@DeleteMapping(&quot;&#123;id&#125;&quot;)</span><br><span class="hljs-comment">//mapping后面的参数是url后面跟的 会被PathVariable拿到给形参id使用</span><br><span class="hljs-keyword">public</span> R <span class="hljs-title function_">removeTeacher</span><span class="hljs-params">(<span class="hljs-meta">@ApiParam(name = &quot;id&quot;,value = &quot;讲师id&quot;,required = true)</span> <span class="hljs-meta">@PathVariable</span> String id)</span>&#123;<br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> teacherService.removeById(id);<br>    <span class="hljs-keyword">if</span> (flag)&#123;<br>        <span class="hljs-keyword">return</span> R.ok();<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> R.error();<br>    &#125;<br>&#125;<br>    <span class="hljs-comment">//5.添加讲师的方法</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;添加讲师&quot;)</span><br>    <span class="hljs-meta">@PostMapping(&quot;addTeacher&quot;)</span><br>    <span class="hljs-keyword">public</span> R <span class="hljs-title function_">addTeacher</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> EduTeacher eduTeacher)</span>&#123;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">save</span> <span class="hljs-operator">=</span> teacherService.save(eduTeacher);<br>        <span class="hljs-keyword">if</span> (save)&#123;<br>            <span class="hljs-keyword">return</span> R.ok();<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> R.error();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">//6.根据讲师名进行查询</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;查询讲师&quot;)</span><br>    <span class="hljs-meta">@GetMapping(&quot;getTeacher/&#123;id&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> R <span class="hljs-title function_">getTeacher</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> String id)</span>&#123;<br>        <span class="hljs-type">EduTeacher</span> <span class="hljs-variable">eduTeacher</span> <span class="hljs-operator">=</span> teacherService.getById(id);<br>        <span class="hljs-keyword">return</span> R.ok().data(<span class="hljs-string">&quot;teacher&quot;</span>,eduTeacher);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>后端的post方法有@RequestBody等待接受参数，这个参数从前端传过来，后端调用service等完成数据库的操作</p>
+<p>前端的vue中用data定义变量和初始值，下面的methods中添加方法，调用js中的具体功能，如果是后端需要从前端接受数据，那就把data中的数据传给methods，methods调用js功能时把data参数传过去，在js中用data来接收，如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//添加讲师</span><br>    <span class="hljs-title function_">addTeacher</span>(<span class="hljs-params">teacher</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">request</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">`/eduservice/teacher/addTeacher`</span>,<br>            <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>            <span class="hljs-attr">data</span>: teacher<br>          &#125;)<br>    &#125;,<br></code></pre></td></tr></table></figure>
+
+<p>如果后端不需要从前端接受数据，那就只在methods中调用js方法即可，如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//删除讲师</span><br><span class="hljs-title function_">deleteTeacherId</span>(<span class="hljs-params">id</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">request</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">`/eduservice/teacher/<span class="hljs-subst">$&#123;id&#125;</span>`</span>,<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;delete&#x27;</span>,<br>      &#125;)<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+
+
+<p>3.当在页面点击修改 再点添加讲师时，数据还是修改的数据，按理应该是清空的状态</p>
+<p>是路由问题导致的，添加了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">watch</span>: &#123;<br>    <span class="hljs-comment">//监听</span><br>    $route(to, <span class="hljs-keyword">from</span>) &#123;<br>      <span class="hljs-comment">//路由变化的方式</span><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();<br>    &#125;,<br>  &#125;,<br>      <br><span class="hljs-attr">methods</span>: &#123;<br>    <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">params</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>) &#123;<br>        <span class="hljs-comment">//从路径获取id值</span><br>        <span class="hljs-keyword">const</span> id = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>;<br>        <span class="hljs-comment">//调用根据id查询的方法</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getInfo</span>(id);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 路径没有id值 做添加</span><br>        <span class="hljs-comment">//清空表单</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">teacher</span> = &#123;&#125;;<br>      &#125;<br>    &#125;,<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>监听路由变化，如果变了那就切换路由 </p>
+<p>4.上传头像后 如果想要更改图像 界面还是之前成功的界面</p>
+<p>办法：让key每次加1，唯一标识不一样了，他的记录就不一样了</p>
+<p>5.路由跳转 一般是在进行添加后 跳转到主页面的操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">this.$router.push(&#123; path: &quot;/teacher/table&quot; &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>这里的路径取决于route路径下 index中的path的路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/teacher&#x27;</span>,<br>   <span class="hljs-attr">component</span>: <span class="hljs-title class_">Layout</span>,<br>   <span class="hljs-attr">redirect</span>: <span class="hljs-string">&#x27;/teacher/table&#x27;</span>,<br>   <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;讲师管理&#x27;</span>,<br>   <span class="hljs-attr">meta</span>: &#123; <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;讲师管理&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;example&#x27;</span> &#125;,<br>   <span class="hljs-attr">children</span>: [<br>     &#123;<br>       <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;table&#x27;</span>,<br>       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;讲师列表&#x27;</span>,<br>       <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">import</span>(<span class="hljs-string">&#x27;@/views/edu/teacher/list&#x27;</span>),<br>       <span class="hljs-attr">meta</span>: &#123; <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;讲师列表&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;table&#x27;</span> &#125;<br>     &#125;,<br></code></pre></td></tr></table></figure>
+
+<p>6.课程管理 添加课程中 课程分类一级选择后二级没显示 </p>
+<p>从页面f12可看出 subjectOneList没有被定义</p>
+<p>因为这个subjectOneList是在data中定义的 所以不能直接调用 要在前面加this关键字，添加后问题解决</p>
+<p>7.当我选择了一个一级分类 再选二级分类后 更改一级分类，二级分类并没有改变，还是之前一级分类下面的内容</p>
+<p>8.课程管理添加章节 第二步添加课程时全局异常</p>
+<p><img src="C:\Users\ZhangXL\AppData\Roaming\Typora\typora-user-images\image-20220614141018387.png" srcset="/img/loading.gif" lazyload alt="image-20220614141018387"></p>
+<p>接口中报这个错误 是因为前端没有传course_id进去</p>
+<p><img src="C:\Users\ZhangXL\AppData\Roaming\Typora\typora-user-images\image-20220614141102648.png" srcset="/img/loading.gif" lazyload alt="image-20220614141102648"></p>
+<p>chapter对象中的id为空</p>
+<p>解决办法 在调用需要使用course_id的方法之前，把值赋给对象的id属性即可</p>
+<p><img src="C:\Users\ZhangXL\AppData\Roaming\Typora\typora-user-images\image-20220614141210265.png" srcset="/img/loading.gif" lazyload alt="image-20220614141210265"></p>
+<p>9.测试对章节和小节的操作时出现了问题</p>
+<p>如果在章节中添加小节 没有问题</p>
+<p>我再添加小节 没有问题</p>
+<p>如果我修改小节 没有问题</p>
+<p>但是如果我先修改小节 在添加小节 就出现了问题 因为此时有video的id，添加小节依旧走修改小节的方法 </p>
+<p>解决办法：每次修改完小节后 将this.video.id = ‘ ‘ 即可</p>
+<p>10.当我调用自己写的sql语句的时候，出现异常</p>
+<p><img src="C:\Users\ZhangXL\AppData\Roaming\Typora\typora-user-images\image-20220614213435572.png" srcset="/img/loading.gif" lazyload alt="image-20220614213435572"></p>
+<p>数据绑定异常 经查阅可得知是maven的问题 在target的class文件中只有.class文件，没有xml文件 找不到sql语句</p>
+<p>解决方式：</p>
+<p>1.复制xml文件到target中</p>
+<p>2.把xml文件放到resources目录中</p>
+<p>3。推荐使用 通过配置实现</p>
+<p>​    （1）pom.xml</p>
+<p>​    （2）application.properties</p>
+<p>11 CmsApplication启动时出现异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="hljs-string">&#x27;bannerAdminController&#x27;</span>: Unsatisfied dependency expressed through field <span class="hljs-string">&#x27;bannerService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="hljs-string">&#x27;crmBannerServiceImpl&#x27;</span>: Unsatisfied dependency expressed through field <span class="hljs-string">&#x27;baseMapper&#x27;</span>; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="hljs-string">&#x27;crmBannerMapper&#x27;</span> defined in file [D:\learn\guli_parent\service\service_cms\target\classes\com\educms\mapper\CrmBannerMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property <span class="hljs-string">&#x27;sqlSessionFactory&#x27;</span> or <span class="hljs-string">&#x27;sqlSessionTemplate&#x27;</span> are required<br><br></code></pre></td></tr></table></figure>
+
+<p>删掉主启动类的@ComponentScan({“com”})，在serviceimpl加上@Service注解，问题解决，这里是尚硅谷有多一次层的atguigu，我直接删掉了，只保留了com，创建bean失败</p>
+<p>为什么要删除@ComponentScan? 为什么注解只能加在serviceimpl上？为什么mapper不用加？为什么加在service上不行？</p>
+<p>12 redis中间件在idea失效</p>
+<p>其他尝试均无异常 Windows连接工具连接服务器的redis成功 idea配置文件不起作用 </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2022/07/24/谷粒学院/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/13/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

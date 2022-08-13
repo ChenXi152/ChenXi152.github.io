@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="java八股文1.为什么重写 equals 还要重写 hashcode？当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了， 就调用它的equals方法与新元素进行比较，相同的话就不存了，不相同就散列其它的地址。  所以这里存在一个冲突解决的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/08/13/java%E5%85%AB%E8%82%A1%E6%96%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java八股文1.为什么重写 equals 还要重写 hashcode？当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了， 就调用它的equals方法与新元素进行比较，相同的话就不存了，不相同就散列其它的地址。  所以这里存在一个冲突解决的问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/ZhangXL/Desktop/八股/图片/集合.png">
+<meta property="og:image" content="c:/Users/ZhangXL/Desktop/八股/图片/hashmap-1.png">
+<meta property="og:image" content="c:/Users/ZhangXL/Desktop/八股/图片/hashmap-2.png">
+<meta property="og:image" content="c:/Users/ZhangXL/Desktop/八股/图片/hashmap-3.png">
+<meta property="og:image" content="c:/Users/ZhangXL/Desktop/八股/图片/7、如何将字符串反转？.png">
+<meta property="article:published_time" content="2022-08-13T05:28:50.724Z">
+<meta property="article:modified_time" content="2022-05-18T04:47:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/ZhangXL/Desktop/八股/图片/集合.png">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-13 13:28" pubdate>
+          2022年8月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          130 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="java八股文"><a href="#java八股文" class="headerlink" title="java八股文"></a>java八股文</h1><h2 id="1-为什么重写-equals-还要重写-hashcode？"><a href="#1-为什么重写-equals-还要重写-hashcode？" class="headerlink" title="1.为什么重写 equals 还要重写 hashcode？"></a>1.为什么重写 equals 还要重写 hashcode？</h2><p>当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了， 就调用它的equals方法与新元素进行比较，相同的话就不存了，不相同就散列其它的地址。 </p>
+<p>所以这里存在一个冲突解决的问题。这样一来实际调用equals方法的次数就大大降低了，几乎只需要一两次。  </p>
+<p>所以，Java对于eqauls方法和hashCode方法是这样规定的：</p>
+<p>1、如果两个对象相同，那么它们的hashCode值一定要相同；</p>
+<p>2、如果两个对象的hashCode相同，它们并不一定相同 </p>
+<h2 id="2-和-equals-比较的区别"><a href="#2-和-equals-比较的区别" class="headerlink" title="2.== 和 equals 比较的区别"></a>2.== 和 equals 比较的区别</h2><p>==是关系运算符，equals()是方法，同时他们的结果都返回布尔值；</p>
+<p>==使用情况如下：</p>
+<p>a) 基本类型，比较的是值</p>
+<p>b) 引用类型，比较的是地址</p>
+<p>c) 不能比较没有父子关系的两个对象</p>
+<p>equals()方法使用如下：</p>
+<p>a) 系统类一般已经重写了equals()，比较的是内容。</p>
+<p>b) 用户自定义类如果没有重写equals()，将调用父类的equals （比如是Object），而Object的equals的比较是地址（return (this == obj);）</p>
+<p>c) 用户自定义类需要重写父类的equals()</p>
+<p>注意：Object的==和equals比较的都是地址，作用相同。</p>
+<h2 id="3-为啥有时会出现-4-0-3-6-0-40000001-这种现象？"><a href="#3-为啥有时会出现-4-0-3-6-0-40000001-这种现象？" class="headerlink" title="3.为啥有时会出现 4.0 - 3.6 = 0.40000001 这种现象？"></a>3.为啥有时会出现 4.0 - 3.6 = 0.40000001 这种现象？</h2><p>这种舍入误差的主要原因是：<br>浮点数值采用二进制系统表示， 而在二进制系统中无法精确地表示分数 1/10。<br>这 就好像十进制无法精确地表示分数 1/3—样。<br>如果在数值计算中不允许有任何舍入误差， 就应该使用 BigDecimal类。</p>
+<h2 id="4-final-关键字的作用"><a href="#4-final-关键字的作用" class="headerlink" title="4.final 关键字的作用"></a>4.final 关键字的作用</h2><p>final类:不可被继承，如java.lang.Math就是一个 final类，不可被继承。</p>
+<p>final变量:在初始化后不可改变变量值，用于常量定义。如果final变量是引用变量，则不可以改变它的引用对象，但可以改变对象的属性。final修饰的变量是一个常量。只能被赋值一次</p>
+<p>final方法:不可被重写</p>
+<p>定义常量:</p>
+<p>//static作用于成员变量用来表示只保存一份副本，而final的作用是用来保证变量不可变。</p>
+<p>public static final double pi=3.14;</p>
+<h2 id="5-介绍-Java-的集合类"><a href="#5-介绍-Java-的集合类" class="headerlink" title="5.介绍 Java 的集合类"></a>5.介绍 Java 的集合类</h2><p><strong>1)</strong>    集合类型可以归纳为三种List、Map、Set</p>
+<p><img src="C:\Users\ZhangXL\Desktop\八股\图片\集合.png" srcset="/img/loading.gif" lazyload alt="集合"></p>
+<p>Map接口和Collection接口是所有集合框架的父接口</p>
+<p>Collection接口的子接口包括：Set接口和List接口</p>
+<p>Map接口的实现类主要有：<strong>HashMap</strong>、TreeMap、Hashtable、LinkedHashMap、<strong>ConcurrentHashMap</strong>以及Properties等</p>
+<p>Set接口的实现类主要有：HashSet、TreeSet、LinkedHashSet等</p>
+<p>List接口的实现类主要有：<strong>ArrayList</strong>、<strong>LinkedList</strong>、Stack以及Vector等</p>
+<p> <strong>结构特点</strong></p>
+<p>List 和 Set 是存储单列数据的集合，Map 是存储键和值这样的双列数据的集合；</p>
+<p>List 中存储的数据是有顺序，并且允许重复；</p>
+<p>Map 中存储的数据是没有顺序的，其键是不能重复的，它的值是可以有重复的，</p>
+<p>Set 中存储的数据是无序的，且不允许有重复，但元素在集合中的位置由元素的 hashcode 决定，位置是固定的（Set 集合根据 hashcode 来进行数据的存储，所以位置是固定的，但是位置不是用户可以控制的，所以对于用户来说 set 中的元素还是无序的）；</p>
+<p><strong>实现类</strong></p>
+<p><strong>List</strong> <strong>接口有三个实现类</strong></p>
+<p>LinkedList：基于链表实现，链表内存是散乱的，每一个元素存储本身内存地址的同时还存储下一个元素的地址。链表增删快，查找慢；</p>
+<p>ArrayList：基于数组实现，非线程安全的，效率高，便于索引，但不便于插入删除；</p>
+<p>Vector：基于数组实现，线程安全的，效率低。</p>
+<p><strong>Map</strong> <strong>接口有三个实现类</strong></p>
+<p>HashMap：基于 hash 表的 Map 接口实现，非线程安全，高效，<strong>支持</strong> null 值和 null 键；</p>
+<p>HashTable：线程安全，低效，<strong>不支持</strong> <strong>null</strong> <strong>值和 null</strong> <strong>键</strong>；</p>
+<p><strong>HashMap<strong><strong>和HashTable</strong></strong>的 key</strong> <strong>值均不能重复，若添加 key</strong> <strong>相同的键值对，后面的 value</strong> <strong>会自动覆盖前面的 value****，但不会报错。</strong></p>
+<p>LinkedHashMap：是HashMap 的一个子类，保存了记录的插入顺序；</p>
+<p>SortMap 接口：TreeMap，能够把它保存的记录根据键排序，默认是键值的升序排序。</p>
+<p><strong>Set</strong> <strong>接口有两个实现类</strong></p>
+<p>HashSet：底层是由 HashMap 实现，不允许集合中有重复的值，使用该方式时需要重写 equals()和 hashCode()方法；</p>
+<p>LinkedHashSet：继承于HashSet，同时又基于 LinkedHashMap 来进行实现，底层使用的是 LinkedHashMap</p>
+<h2 id="6-ArrayList-和-LinkedList-的区别"><a href="#6-ArrayList-和-LinkedList-的区别" class="headerlink" title="6.ArrayList 和 LinkedList 的区别"></a>6.ArrayList 和 LinkedList 的区别</h2><p>相同点：ArrayList 和LinkedList 都是List 接口的实现类，因此都具有List 的特点，即存取有序，可重复；而且都不是线程安全的。</p>
+<p>不同点：ArrayList 基于数组实现，LinkedList 基于双向链表实现。</p>
+<p>ArrayList 基于数组存储数据，因此查询元素时可以直接按照数据下标进行索引，而插入元素时，通常涉及到数据元素的复制和移动，所以查询数据快而插入数据慢； </p>
+<p>LinkedList 基于双向链表存储数据，因此查询元素时需要前向或后向遍历，而插入数据时只需要修改本元素的前后项即可，所以查询数据慢而插入数据快。 </p>
+<p>所以，ArrayList 适合查询多（读多）的场景，LinkedList 适合插入多（写多）的场景。</p>
+<h2 id="7-java-8-有哪些新特性？"><a href="#7-java-8-有哪些新特性？" class="headerlink" title="7.java 8 有哪些新特性？"></a>7.java 8 有哪些新特性？</h2><p>1）Lambda表达式和函数式接口</p>
+<p>Lambda表达式（也称为闭包）是Java 8中最大和最令人期待的语言改变。它允许我们将函数当成参数传递给某个方法，或者把代码本身当作数据处理：<a target="_blank" rel="noopener" href="http://www.javacodegeeks.com/2014/03/functional-programming-with-java-8-lambda-expressions-monads.html">函数式开发者</a>非常熟悉这些概念。很多JVM平台上的语言（Groovy、<a target="_blank" rel="noopener" href="http://www.javacodegeeks.com/tutorials/scala-tutorials/">Scala</a>等）从诞生之日就支持Lambda表达式，但是Java开发者没有选择，只能使用匿名内部类代替Lambda表达式。</p>
+<p>2）接口的默认方法和静态方法</p>
+<p>Java 8使用两个新概念扩展了接口的含义：默认方法和静态方法。<a target="_blank" rel="noopener" href="http://blog.csdn.net/yczz/article/details/50896975">默认方法</a>使得接口有点类似traits，不过要实现的目标不一样。默认方法使得开发者可以在 不破坏二进制兼容性的前提下，往现存接口中添加新的方法，即不强制那些实现了该接口的类也同时实现这个新加的方法。</p>
+<p>默认方法和抽象方法之间的区别在于抽象方法需要实现，而默认方法不需要。接口提供的默认方法会被接口的实现类继承或者覆写</p>
+<p>3）方法引用</p>
+<p>方法引用使得开发者可以直接引用现存的方法、Java类的构造方法或者实例对象。方法引用和Lambda表达式配合使用，使得java类的构造方法看起来紧凑而简洁，没有很多复杂的模板代码。</p>
+<p>4）重复注解</p>
+<p>自从Java 5中引入<a target="_blank" rel="noopener" href="http://www.javacodegeeks.com/2012/08/java-annotations-explored-explained.html">注解</a>以来，这个特性开始变得非常流行，并在各个框架和项目中被广泛使用。不过，注解有一个很大的限制是：在同一个地方不能多次使用同一个注解。Java 8打破了这个限制，引入了重复注解的概念，允许在同一个地方多次使用同一个注解。</p>
+<p>在Java 8中使用**@Repeatable**注解定义重复注解</p>
+<h2 id="8-HashMap-在-jdk-1-7-和-1-8-的区别？"><a href="#8-HashMap-在-jdk-1-7-和-1-8-的区别？" class="headerlink" title="8.HashMap 在 jdk 1.7 和 1.8 的区别？"></a>8.HashMap 在 jdk 1.7 和 1.8 的区别？</h2><p>HashMap(Java8以前)：数组+链表</p>
+<p>HashMap在没有为数组赋予长度时，默认是16。每个元素存储的是链表的头结点，通过hash(key.hashCode())%len取模操作获取要添加的元素在数组中的位置。</p>
+<p>这里有一个极端情况，添加到hash表里的元素的key通过取模操作后总是得到同一个值，即所有元素都分配到同一个桶(bucket)，这样在查询链表时要从头部逐个遍历，hashMap的性能会从O(1)恶化到O(n)</p>
+<p><img src="C:\Users\ZhangXL\Desktop\八股\图片\hashmap-1.png" srcset="/img/loading.gif" lazyload alt="hashmap-1"></p>
+<p>HashMap(Java8以后)：</p>
+<p>HashMap由 数组+链表+红黑树实现，桶中元素可能为链表，也可能为红黑树。为了提高综合（查询、添加、修改）效率，当桶中元素数量超过TREEIFY_THRESHOLD（默认为8）时，链表存储改为红黑树存储，当桶中元素数量小于UNTREEIFY_THRESHOLD（默认为6）时，红黑树存储改为链表存储</p>
+<p><img src="C:\Users\ZhangXL\Desktop\八股\图片\hashmap-2.png" srcset="/img/loading.gif" lazyload alt="hashmap-2"></p>
+<p>table即Node&lt;k,v&gt;[] table，Node有两种，分别为链表节点Node和其子类TreeNode（红黑树节点）</p>
+<p>每一个table槽称为桶，用于装hash%table.length的元素                 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">TREEIFY_THRESHOLD</span> <span class="hljs-operator">=</span> <span class="hljs-number">8</span>;<br></code></pre></td></tr></table></figure>
+
+<p>当链表的TREEIFY_THRESHOLD长度超过8时，会将链表转换为红黑树存储。在最坏情况下，hashMap性能会从O(n)提高到O(logn)</p>
+<p>当链表的TREEIFY_THRESHOLD长度低于8时，又会将红黑树转回链表，保持最高的性能</p>
+<p><img src="C:\Users\ZhangXL\Desktop\八股\图片\hashmap-3.png" srcset="/img/loading.gif" lazyload alt="hashmap-3"></p>
+<p><strong>总结</strong></p>
+<p>HashMap是基于哈希表实现的，用Entry[]来存储数据，而Entry中封装了key、value、hash以及Entry类型的next</p>
+<p>HashMap存储数据是无序的</p>
+<p>hash冲突是通过拉链法解决的</p>
+<p>HashMap的容量永远为2的幂次方，有利于哈希表的散列</p>
+<p>HashMap不支持存储多个相同的key，且只保存一个key为null的值，多个会覆盖</p>
+<p>put过程，是先通过key算出hash，然后用hash算出应该存储在table中的index，然后遍历table[index]，看是否有相同的key存在，存在，则更新value；不存在则插入到table[index]单向链表的表头，时间复杂度为O(n)</p>
+<p>get过程，通过key算出hash，然后用hash算出应该存储在table中的index，然后遍历table[index]，然后比对key，找到相同的key，则取出其value，时间复杂度为O(n)</p>
+<p>HashMap是线程不安全的，如果有线程安全需求，推荐使用ConcurrentHashMap。</p>
+<h2 id="9-什么是死锁？死锁产生的条件？"><a href="#9-什么是死锁？死锁产生的条件？" class="headerlink" title="9,什么是死锁？死锁产生的条件？"></a>9,什么是死锁？死锁产生的条件？</h2><p>死锁是最常见的一种线程活性故障。死锁的起因是多个线程之间相互等待对方而被永远暂停（处于非Runnable）。</p>
+<p><strong>死锁的产生必须满足如下四个必要条件：</strong></p>
+<p>资源互斥：一个资源每次只能被一个线程使用</p>
+<p>请求与保持条件：一个线程因请求资源而阻塞时，对已获得的资源保持不放</p>
+<p>不剥夺条件：线程已经获得的资源，在未使用完之前，不能强行剥夺</p>
+<p>循环等待条件：若干线程之间形成一种头尾相接的循环等待资源关系</p>
+<h2 id="10-线程有哪几种状态？"><a href="#10-线程有哪几种状态？" class="headerlink" title="10.线程有哪几种状态？"></a>10.线程有哪几种状态？</h2><h2 id="11-有哪些进程调度算法？"><a href="#11-有哪些进程调度算法？" class="headerlink" title="11.有哪些进程调度算法？"></a>11.有哪些进程调度算法？</h2><ol>
+<li><p>什么是缓冲区溢出</p>
+</li>
+<li><p>计算机网络各层有哪些协议？</p>
+<h2 id="14-TCP-和-UDP-协议的区别？"><a href="#14-TCP-和-UDP-协议的区别？" class="headerlink" title="14.TCP 和 UDP 协议的区别？"></a>14.TCP 和 UDP 协议的区别？</h2><p>1） TCP提供面向连接的传输，通信前要先建立连接（三次握手机制）； UDP提供无连接的传输，通信前不需要建立连接。<br>2） TCP提供可靠的传输（有序，无差错，不丢失，不重复）； UDP提供不可靠的传输。<br>3） TCP面向字节流的传输，因此它能将信息分割成组，并在接收端将其重组； UDP是面向数据报的传输，没有分组开销。<br>4） TCP提供拥塞控制和流量控制机制； UDP不提供拥塞控制和流量控制机制</p>
+<h2 id="15-TCP-为什么需要三次握手和四次挥手？"><a href="#15-TCP-为什么需要三次握手和四次挥手？" class="headerlink" title="15.TCP 为什么需要三次握手和四次挥手？"></a>15.TCP 为什么需要三次握手和四次挥手？</h2><p>通过三次握手确认双方收发功能都正常，四次也可以但是显得比较多余</p>
+<p>有这样一种情况，当A发送一个消息给B，但是由于网络原因，消息被阻塞在了某个节点，然后阻塞的时间超出设定的时间，A会认为这个消息丢失了，然后重新发送消息。</p>
+<p>当A和B通信完成后，这个被A认为失效的消息，到达了B<br>对于B而言，以为这是一个新的请求链接消息，就向A发送确认，<br>对于A而言，它认为没有给B再次发送消息（因为上次的通话已经结束）所有A不会理睬B的这个确认，但是B则会一直等待A的消息</p>
+<p>这就导致了B的时间被浪费（对于服务器而言，CPU等资源是一种浪费），这样是不可行的，这就是为什么不能两次握手的原因了</p>
+<p>第三次握手主要是为了防止已失效的请求报文段突然又传送到了服务端而产生连接的误判</p>
+<p>第一次挥手：</p>
+<p>Clien发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。</p>
+<p>第二次挥手：</p>
+<p>Server收到FIN后，发送一个ACK给Client,Server进入CLOSE_WAIT状态。</p>
+<p>第三次挥手：</p>
+<p>Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。</p>
+<p>第四次挥手：</p>
+<p>Client收到FIN后，Client进入TIME_WAIT状态，发送ACK给Server，Server进入CLOSED状态，完成四次握手</p>
+<p>因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手</p>
+</li>
+<li><p>HTTP 和 HTTPS 协议的区别？</p>
+</li>
+<li><p>MySQL 支持行锁还是表锁？分别有哪些优缺点？</p>
+</li>
+<li><p>Spring 的 IOC 和 AOP 是什么，有哪些优点？</p>
+</li>
+</ol>
+<p>IoC（Inverse of Control:控制反转）是一种设计思想，就是 将原本在程序中手动创建对象的控制权，交由Spring框架来管理。IoC 容器是 Spring 用来实现 IoC 的载体， IoC 容器实际上就是个Map（key，value）,Map 中存放的是各种对象。</p>
+<p>将对象之间的相互依赖关系交给 IoC 容器来管理，并由 IoC 容器完成对象的注入。这样可以很大程度上简化应用的开发，把应用从复杂的依赖关系中解放出来。 IoC 容器就像是一个工厂一样，当我们需要创建一个对象的时候，只需要配置好配置文件/注解即可，完全不用考虑对象是如何被创建出来的。</p>
+<p>利用 IoC 的话，你只需要配置好，然后在需要的地方引用就行了，这大大增加了项目的可维护性且降低了开发难度。</p>
+<p>Spring 时代我们一般通过 XML 文件来配置 Bean，后来开发人员觉得 XML 文件来配置不太好，于是 SpringBoot 注解配置就慢慢开始流行起来。</p>
+<p>AOP，面向切面编程是指当需要在某一个方法之前或者之后做一些额外的操作，比如说日志记录，权限判断，异常统计等，可以利用AOP将功能代码从业务逻辑代码中分离出来。实现方法的增强</p>
+<h2 id="12-Spring-框架用到了哪些设计模式？"><a href="#12-Spring-框架用到了哪些设计模式？" class="headerlink" title="12.Spring 框架用到了哪些设计模式？"></a>12.Spring 框架用到了哪些设计模式？</h2><p>工厂设计模式 : Spring使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。</p>
+<p>代理设计模式 : Spring AOP 功能的实现。</p>
+<p>单例设计模式 : Spring 中的 Bean 默认都是单例的。</p>
+<p>模板方法模式 : Spring 中 jdbcTemplate、hibernateTemplate 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</p>
+<p>包装器设计模式 : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
+<p>适配器模式 :Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配Controller。</p>
+<h2 id="13-介绍-Spring-Bean-的生命周期"><a href="#13-介绍-Spring-Bean-的生命周期" class="headerlink" title="13.介绍 Spring Bean 的生命周期"></a>13.介绍 Spring Bean 的生命周期</h2><p>1.创建前的准备阶段，在bean加载之前，获取spring上下文相关配置并解析，找到bean有关的配置内容</p>
+<p>2.创建实例阶段，通过反射创建bean的实例对象，扫描和解析bean声明的一些属性</p>
+<p>3.依赖注入阶段，检测被实例化的bean是否存在其他依赖，如果存在，将这些依赖注入到bean中，这个阶段还会触发扩展的调用，实现bean初始化前后的回调，赋值等等</p>
+<p>4.容器缓存阶段，把bean保存到ioc容器中缓存起来</p>
+<p>5.销毁实例阶段，在spring应用上下文关闭的时候，销毁spring上下文中所有的bean，调用一些在销毁阶段的方法，完成最后的处理</p>
+<p>bean 生命周期 </p>
+<p>（1）通过构造器创建 bean 实例（无参数构造） </p>
+<p>（2）为 bean 的属性设置值和对其他 bean 引用（调用 set 方法） </p>
+<p>（3）调用 bean 的初始化的方法（需要进行配置初始化的方法）</p>
+<p> （4）bean 可以使用了（对象获取到了） </p>
+<p>（5）当容器关闭时候，调用 bean 的销毁的方法（需要进行配置销毁的方法）</p>
+<h2 id="14-MyBatis-如何实现延迟加载？"><a href="#14-MyBatis-如何实现延迟加载？" class="headerlink" title="14.MyBatis 如何实现延迟加载？"></a>14.MyBatis 如何实现延迟加载？</h2><p>Mybatis 仅支持 association 关联对象和 collection 关联集合对象的延迟加载，association指的就是一对一，collection 指的就是一对多查询。在 Mybatis 配置文件中，可以配置是否启用延迟加载 lazyLoadingEnabled=true|false。</p>
+<p>它的原理是，使用 CGLIB 创建目标对象的代理对象，当调用目标方法时，进入拦截器方法，比如调用 a.getB().getName()，拦截器 invoke()方法发现 a.getB()是 null 值，那么就会单独发送事先保存好的查询关联 B 对象的 sql，把 B 查询上来，然后调用 a.setB(b)，于是 a 的对象 b 属性就有值了，接着完成 a.getB().getName()方法的调用。这就是延迟加载的基本原理。</p>
+<h2 id="15-介绍-MyBatis-的多级缓存机制"><a href="#15-介绍-MyBatis-的多级缓存机制" class="headerlink" title="15.介绍 MyBatis 的多级缓存机制"></a>15.介绍 MyBatis 的多级缓存机制</h2><h3 id="MyBatis的一级缓存"><a href="#MyBatis的一级缓存" class="headerlink" title="MyBatis的一级缓存"></a>MyBatis的一级缓存</h3><ul>
+<li><p>一级缓存是SqlSession级别的，通过同一个SqlSession查询的数据会被缓存，下次查询相同的数据，就会从缓存中直接获取，不会从数据库重新访问  </p>
+</li>
+<li><p>使一级缓存失效的四种情况：  </p>
+<ol>
+<li>不同的SqlSession对应不同的一级缓存  </li>
+<li>同一个SqlSession但是查询条件不同</li>
+<li>同一个SqlSession两次查询期间执行了任何一次增删改操作</li>
+<li>同一个SqlSession两次查询期间手动清空了缓存</li>
+</ol>
+</li>
+</ul>
+<h3 id="MyBatis的二级缓存"><a href="#MyBatis的二级缓存" class="headerlink" title="MyBatis的二级缓存"></a>MyBatis的二级缓存</h3><ul>
+<li><p>二级缓存是SqlSessionFactory级别，通过同一个SqlSessionFactory创建的SqlSession查询的结果会被缓存；此后若再次执行相同的查询语句，结果就会从缓存中获取  </p>
+</li>
+<li><p>二级缓存开启的条件</p>
+<ol>
+<li>在核心配置文件中，设置全局配置属性cacheEnabled=”true”，默认为true，不需要设置</li>
+<li>在映射文件中设置标签<cache /></li>
+<li>二级缓存必须在SqlSession关闭或提交之后有效</li>
+<li>查询的数据所转换的实体类类型必须实现序列化的接口</li>
+</ol>
+</li>
+<li><p>使二级缓存失效的情况：两次查询之间执行了任意的增删改，会使一级和二级缓存同时失效</p>
+</li>
+</ul>
+<h2 id="16-为什么Redis-是单线程的以及为什么这么快？"><a href="#16-为什么Redis-是单线程的以及为什么这么快？" class="headerlink" title="16.为什么Redis 是单线程的以及为什么这么快？"></a>16.为什么Redis 是单线程的以及为什么这么快？</h2><ul>
+<li>redis完全基于内存,绝大部分请求是纯粹的内存操作,非常快速.</li>
+<li>数据结构简单,对数据操作也简单,redis中的数据结构是专门进行设计的</li>
+<li>采用单线程模型, 避免了不必要的上下文切换和竞争条件, 也不存在多线程或者多线程切换而消耗CPU, 不用考虑各种锁的问题, 不存在加锁, 释放锁的操作, 没有因为可能出现死锁而导致性能消耗</li>
+<li>使用了多路IO复用模型,非阻塞IO</li>
+<li>使用底层模型不同,它们之间底层实现方式及与客户端之间的 通信的应用协议不一样,Redis直接构建了自己的VM机制,因为一般的系统调用系统函数的话,会浪费一定的时间去移动和请求</li>
+</ul>
+<ol>
+<li><p>如何解决提交冲突？</p>
+<p>发生冲突，在IDE里面一般都是对比本地文件和远程分支的文件，然后把远程分支上文件的内容手工修改到本地文件，然后再提交冲突的文件使其保证与远程分支的文件一致，这样才会消除冲突，然后再提交自己修改的部分。特别要注意下，修改本地冲突文件使其与远程仓库的文件保持一致后，需要提交后才能消除冲突，否则无法继续提交。必要时可与同事交流，消除冲突。</p>
+<p>发生冲突，也可以使用命令。</p>
+<p>通过git stash命令，把工作区的修改提交到栈区，目的是保存工作区的修改；</p>
+<p>通过git pull命令，拉取远程分支上的代码并合并到本地分支，目的是消除冲突；</p>
+<p>通过git stash pop命令，把保存在栈区的修改部分合并到最新的工作空间中；</p>
+</li>
+</ol>
+<ol>
+<li>提交不小心出现误操作，如何撤销？</li>
+</ol>
+<ol>
+<li><p>什么是 Git Flow，它有什么好处</p>
+</li>
+<li><p>如何查看某个进程的运行状态？</p>
+</li>
+<li><p>如何在 Linux 上查看 2 G 的大文件？</p>
+</li>
+<li><p>Linux 软链接和硬链接的区别</p>
+</li>
+<li><p>单例模式有哪些实现方式？有哪些优缺点？请手写其中一种</p>
+</li>
+<li><p>你用过哪些设计模式，为什么用它？</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
+</ol>
+<ol>
+<li>Redis 有哪些常用的数据结构？</li>
+<li>Redis RDB 和 AOF 持久化的区别，如何选择？</li>
+<li>如何解决缓存击穿、缓存穿透、雪崩问题？</li>
+<li>如何用 Redis 实现点赞功能，怎么设计 Key / Value？</li>
+<li>介绍 JVM 的内存模型？</li>
+<li>JVM 内存为什么要分代？</li>
+<li>介绍一次完整的 GC 流程</li>
+<li>介绍双亲委派模型，为什么需要它？</li>
+</ol>
+<h2 id="1、JDK-和-JRE-有什么区别？"><a href="#1、JDK-和-JRE-有什么区别？" class="headerlink" title="1、JDK 和 JRE 有什么区别？"></a>1、JDK 和 JRE 有什么区别？</h2><p>JDK（Java Development Kit），Java开发工具包</p>
+<p>JRE（Java Runtime Environment），Java运行环境</p>
+<p>JDK中包含JRE，JDK中有一个名为jre的目录，里面包含两个文件夹bin和lib，bin就是JVM，lib就是JVM工作所需要的类库。</p>
+<h2 id="2、-和-equals-的区别是什么？"><a href="#2、-和-equals-的区别是什么？" class="headerlink" title="2、== 和 equals 的区别是什么？"></a>2、== 和 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=equals&spm=1001.2101.3001.7020">equals</a> 的区别是什么？</h2><ol>
+<li>对于基本类型，==比较的是值；</li>
+<li>对于引用类型，==比较的是地址；</li>
+<li>equals不能用于基本类型的比较；</li>
+<li>如果没有重写equals，equals就相当于==；</li>
+<li>如果重写了equals方法，equals比较的是对象的内容</li>
+</ol>
+<h2 id="3、final-在-java-中有什么作用？"><a href="#3、final-在-java-中有什么作用？" class="headerlink" title="3、final 在 java 中有什么作用？"></a>3、final 在 java 中有什么作用？</h2><p>1）用来修饰一个引用</p>
+<p> 如果引用为基本数据类型，则该引用为常量，该值无法修改；<br> 如果引用为引用数据类型，比如对象、数组，则该对象、数组本身可以修改，但指向该对象或数组的地址的引用不能修改。<br> 如果引用时类的成员变量，则必须当场赋值，否则编译会报错。<br>（2）用来修饰一个方法</p>
+<p>当使用final修饰方法时，这个方法将成为最终方法，无法被子类重写。但是，该方法仍然可以被继承。</p>
+<p>（3）用来修饰类</p>
+<p>当用final修改类时，该类成为最终类，无法被继承。</p>
+<p> 比如常用的String类就是最终类。</p>
+<h2 id="4、java-中的-Math-round-1-5-等于多少？"><a href="#4、java-中的-Math-round-1-5-等于多少？" class="headerlink" title="4、java 中的 Math.round(-1.5) 等于多少？"></a>4、java 中的 Math.round(-1.5) 等于多少？</h2><p>Math提供了三个与取整有关的方法：ceil、floor、round</p>
+<p>（1）ceil：向上取整；</p>
+<p>Math.ceil(11.3) = 12;</p>
+<p>Math.ceil(-11.3) = 11;</p>
+<p>（2）floor：向下取整；</p>
+<p>Math.floor(11.3) = 11;</p>
+<p>Math.floor(-11.3) = -12;</p>
+<p>（3）round：四舍五入；</p>
+<p>加0.5然后向下取整。</p>
+<p>Math.round(11.3) = 11;</p>
+<p>Math.round(11.8) = 12;</p>
+<p>Math.round(-11.3) = -11;</p>
+<p>Math.round(-11.8) = -12;</p>
+<h2 id="5、String-属于基础的数据类型吗？"><a href="#5、String-属于基础的数据类型吗？" class="headerlink" title="5、String 属于基础的数据类型吗？"></a>5、String 属于基础的数据类型吗？</h2><p>不属于。</p>
+<p>八种基本数据类型：byte、short、char、int、long、double、float、boolean。</p>
+<h2 id="6、String-str-”i”与-String-str-new-String-“i”-一样吗？"><a href="#6、String-str-”i”与-String-str-new-String-“i”-一样吗？" class="headerlink" title="6、String str=”i”与 String str=new String(“i”)一样吗？"></a>6、String str=”i”与 String str=new String(“i”)一样吗？</h2><p>String str=”i”会将起分配到常量池中，常量池中没有重复的元素，如果常量池中存中i，就将i的地址赋给变量，如果没有就创建一个再赋给变量。</p>
+<p>String str=new String(“i”)会将对象分配到堆中，即使内存一样，还是会重新创建一个新的对象。</p>
+<h2 id="7、如何将字符串反转？"><a href="#7、如何将字符串反转？" class="headerlink" title="7、如何将字符串反转？"></a>7、如何将字符串反转？</h2><p>将对象封装到stringBuilder中，调用reverse方法反转。</p>
+<p><img src="C:\Users\ZhangXL\Desktop\八股\图片\7、如何将字符串反转？.png" srcset="/img/loading.gif" lazyload alt="7、如何将字符串反转？"></p>
+<h2 id="8、String-类的常用方法都有那些？"><a href="#8、String-类的常用方法都有那些？" class="headerlink" title="8、String 类的常用方法都有那些？"></a>8、String 类的常用方法都有那些？</h2><p>（1）常见String类的获取功能</p>
+<p>length：获取字符串长度；<br>charAt(int index)：获取指定索引位置的字符；<br>indexOf(int ch)：返回指定字符在此字符串中第一次出现处的索引；<br>substring(int start)：从指定位置开始截取字符串,默认到末尾；<br>substring(int start,int end)：从指定位置开始到指定位置结束截取字符串；</p>
+<p>（2）常见String类的判断功能</p>
+<p>equals(Object obj)： 比较字符串的内容是否相同,区分大小写；<br>contains(String str): 判断字符串中是否包含传递进来的字符串；<br>startsWith(String str): 判断字符串是否以传递进来的字符串开头；<br>endsWith(String str): 判断字符串是否以传递进来的字符串结尾；<br>isEmpty(): 判断字符串的内容是否为空串””；</p>
+<p>（3）常见String类的转换功能</p>
+<p>byte[] getBytes(): 把字符串转换为字节数组；<br>char[] toCharArray(): 把字符串转换为字符数组；<br>String valueOf(char[] chs): 把字符数组转成字符串。valueOf可以将任意类型转为字符串；<br>toLowerCase(): 把字符串转成小写；<br>toUpperCase(): 把字符串转成大写；<br>concat(String str): 把字符串拼接；</p>
+<p>（4）常见String类的其他常用功能</p>
+<p>replace(char old,char new) 将指定字符进行互换<br>replace(String old,String new) 将指定字符串进行互换<br>trim() 去除两端空格<br>int compareTo(String str) 会对照ASCII 码表 从第一个字母进行减法运算 返回的就是这个减法的结果，如果前面几个字母一样会根据两个字符串的长度进行减法运算返回的就是这个减法的结果，如果两个字符串一模一样 返回的就是0。</p>
+<h2 id="9、new-String-“a”-new-String-“b”-会创建几个对象？"><a href="#9、new-String-“a”-new-String-“b”-会创建几个对象？" class="headerlink" title="9、new String(“a”) + new String(“b”) 会创建几个对象？"></a>9、new String(“a”) + new String(“b”) 会创建几个对象？</h2><p>对象1：new StringBuilder()</p>
+<p>对象2：new String(“a”)</p>
+<p>对象3：常量池中的”a”</p>
+<p>对象4：new String(“b”)</p>
+<p>对象5：常量池中的”b”</p>
+<p>深入剖析：StringBuilder中的toString()：</p>
+<p>对象6：new String(“ab”)</p>
+<p>强调一下，toString()的调用，在字符串常量池中，没有生成”ab”</p>
+<p>附加题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;1&quot;</span>) + <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;1&quot;</span>);<span class="hljs-comment">//s1变量记录的地址为：new String</span><br>s1.intern();<span class="hljs-comment">//在字符串常量池中生成&quot;11&quot;。如何理解：jdk6：创建了一个新的对象&quot;11&quot;，也就有新的地址；jdk7：此时常量池中并没有创建&quot;11&quot;，而是创建了一个指向堆空间中new String(&quot;11&quot;)的地址；</span><br><span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;11&quot;</span>;<br>System.out.println(s1 == s2);<span class="hljs-comment">//jdk6:false;jdk7:true</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="10、如何将字符串反转？"><a href="#10、如何将字符串反转？" class="headerlink" title="10、如何将字符串反转？"></a>10、如何将字符串反转？</h2><p>添加到StringBuilder中，然后调用reverse()</p>
+<h2 id="11、String-类的常用方法都有那些？"><a href="#11、String-类的常用方法都有那些？" class="headerlink" title="11、String 类的常用方法都有那些？"></a>11、String 类的常用方法都有那些？</h2><p>equals、length、contains、replace、split、hashcode、indexof、substring、trim、toUpperCase、toLowerCase、isEmpty等等。</p>
+<h2 id="12、普通类和抽象类有哪些区别？"><a href="#12、普通类和抽象类有哪些区别？" class="headerlink" title="12、普通类和抽象类有哪些区别？"></a>12、普通类和抽象类有哪些区别？</h2><p>抽象类不能被实例化；<br>抽象类可以有抽象方法，只需申明，无须实现；<br>有抽象方法的类一定是抽象类；<br>抽象类的子类必须实现抽象类中的所有抽象方法，否则子类仍然是抽象类；<br>抽象方法不能声明为静态、不能被static、final修饰。</p>
+<h2 id="13、接口和抽象类有什么区别？"><a href="#13、接口和抽象类有什么区别？" class="headerlink" title="13、接口和抽象类有什么区别？"></a>13、接口和抽象类有什么区别？</h2><p>（1）接口</p>
+<p>接口使用interface修饰；<br>接口不能实例化；<br>类可以实现多个接口；</p>
+<p>①java8之前，接口中的方法都是抽象方法，省略了public abstract。②java8之后；接口中可以定义静态方法，静态方法必须有方法体，普通方法没有方法体，需要被实现；</p>
+<p>（2）抽象类</p>
+<p>抽象类使用abstract修饰；<br>抽象类不能被实例化；<br>抽象类只能单继承；<br>抽象类中可以包含抽象方法和非抽象方法，非抽象方法需要有方法体；<br>如果一个类继承了抽象类，①如果实现了所有的抽象方法，子类可以不是抽象类；②如果没有实现所有的抽象方法，子类仍然是抽象类</p>
+<h2 id="14、java-中-IO-流分为几种？"><a href="#14、java-中-IO-流分为几种？" class="headerlink" title="14、java 中 IO 流分为几种？"></a>14、java 中 IO 流分为几种？</h2><p>（1）按流划分，可以分为输入流和输出流；</p>
+<p>（2）按单位划分，可以分为字节流和字符流；</p>
+<p>字节流：inputStream、outputStream；</p>
+<p>字符流：reader、writer；</p>
+<h2 id="15-说一说String和StringBuffer有什么区别"><a href="#15-说一说String和StringBuffer有什么区别" class="headerlink" title="15.说一说String和StringBuffer有什么区别"></a>15.说一说String和StringBuffer有什么区别</h2><p>tring类是不可变类，即一旦一个String对象被创建以后，包含在这个对象中的字符序列是不可改变的，直至这个对象被销毁。</p>
+<p>StringBuffer对象则代表一个字符序列可变的字符串，当一个StringBuffer被创建以后，通过StringBuffer提供的append()、insert()、reverse()、setCharAt()、setLength()等方法可以改变这个字符串对象的字符序列。一旦通过StringBuffer生成了最终想要的字符串，就可以调用它的toString()方法将其转换为一个String对象。</p>
+<h2 id="16-说一说StringBuffer和StringBuilder有什么区别"><a href="#16-说一说StringBuffer和StringBuilder有什么区别" class="headerlink" title="16.说一说StringBuffer和StringBuilder有什么区别"></a>16.说一说StringBuffer和StringBuilder有什么区别</h2><p>StringBuffer、StringBuilder都代表可变的字符串对象，它们有共同的父类 AbstractStringBuilder，并且两个类的构造方法和成员方法也基本相同。不同的是，StringBuffer是线程安全的，而StringBuilder是非线程安全的，所以StringBuilder性能略高。一般情况下，要创建一个内容可变的字符串，建议优先考虑StringBuilder类。</p>
+<h2 id="17-接口和抽象类有什么区别？"><a href="#17-接口和抽象类有什么区别？" class="headerlink" title="17.接口和抽象类有什么区别？"></a>17.接口和抽象类有什么区别？</h2><p>从设计目的上来说，二者有如下的区别：</p>
+<p>接口体现的是一种规范。对于接口的实现者而言，接口规定了实现者必须向外提供哪些服务；对于接口的调用者而言，接口规定了调用者可以调用哪些服务，以及如何调用这些服务。当在一个程序中使用接口时，接口是多个模块间的耦合标准；当在多个应用程序之间使用接口时，接口是多个程序之间的通信标准。</p>
+<p>抽象类体现的是一种模板式设计。抽象类作为多个子类的抽象父类，可以被当成系统实现过程中的中间产品，这个中间产品已经实现了系统的部分功能，但这个产品依然不能当成最终产品，必须有更进一步的完善，这种完善可能有几种不同方式。</p>
+<p>从使用方式上来说，二者有如下的区别：</p>
+<ul>
+<li>接口里只能包含抽象方法、静态方法、默认方法和私有方法，不能为普通方法提供方法实现；抽象类则完全可以包含普通方法。</li>
+<li>接口里只能定义静态常量，不能定义普通成员变量；抽象类里则既可以定义普通成员变量，也可以定义静态常量。</li>
+<li>接口里不包含构造器；抽象类里可以包含构造器，抽象类里的构造器并不是用于创建对象，而是让其子类调用这些构造器来完成属于抽象类的初始化操作。</li>
+<li>接口里不能包含初始化块；但抽象类则完全可以包含初始化块。</li>
+<li>一个类最多只能有一个直接父类，包括抽象类；但一个类可以直接实现多个接口，通过实现多个接口可以弥补Java单继承的不足。</li>
+</ul>
+<h2 id="18-创建线程有哪几种方式"><a href="#18-创建线程有哪几种方式" class="headerlink" title="18.创建线程有哪几种方式"></a>18.创建线程有哪几种方式</h2><p>继承Thread重写run(),调用start</p>
+<p>定义runnable接口的实现类，并重写该接口的run()方法，调用start()</p>
+<h2 id="19-mybatis的id能否重复，命名空间能否重复，命名空间的id能否重复？"><a href="#19-mybatis的id能否重复，命名空间能否重复，命名空间的id能否重复？" class="headerlink" title="19.mybatis的id能否重复，命名空间能否重复，命名空间的id能否重复？"></a>19.mybatis的id能否重复，命名空间能否重复，命名空间的id能否重复？</h2><p>可以重复，但是需要映射文件的namespace不同；</p>
+<p>不同的XML映射文件，如果配置了namespace, 那么id可以重复；如果没有配置namespace, 那么id不能重复；</p>
+<p>原因就是namespace+id是作为Map&lt;String,MapperStatement&gt;的key使用的，如果没有namespace， 就剩下id. 那么id重复会导致数据互相覆盖；</p>
+<p>有了namespace，自然id就可以重复，namespace不同，namespace+id自然也就不同了。<br>总的来说，要么id不一样，可以直接用，要么id一样，但是namespace不一样，使用的时候加上namespace区分。</p>
+<h2 id="20-类加载的生命周期？"><a href="#20-类加载的生命周期？" class="headerlink" title="20.类加载的生命周期？"></a>20.类加载的生命周期？</h2><p>类加载的过程包括了<strong>加载、验证、准备、解析、初始化</strong>五个阶段</p>
+<p>类的加载: 查找并加载类的二进制数据</p>
+<p>连接</p>
+<ul>
+<li>验证: 确保被加载的类的正确性</li>
+<li>准备: 为类的静态变量分配内存，并将其初始化为默认值</li>
+<li>解析: 把类中的符号引用转换为直接引用</li>
+</ul>
+<p>初始化：为类的静态变量赋予正确的初始值，JVM负责对类进行初始化，主要对类变量进行初始化。</p>
+<p>使用： 类访问方法区内的数据结构的接口， 对象是Heap区的数据</p>
+<p>卸载： 结束生命周期</p>
+<h2 id="21-类加载器的层次"><a href="#21-类加载器的层次" class="headerlink" title="21.类加载器的层次?"></a>21.类加载器的层次?</h2><p><strong>启动类加载器</strong>: Bootstrap ClassLoader，负责加载存放在JDK\jre\lib(JDK代表JDK的安装目录，下同)下，或被-Xbootclasspath参数指定的路径中的，并且能被虚拟机识别的类库(如rt.jar，所有的java.*开头的类均被Bootstrap ClassLoader加载)。启动类加载器是无法被Java程序直接引用的。</p>
+<p>核心类加载器，java开头</p>
+<p><strong>扩展类加载器</strong>: Extension ClassLoader，该加载器由<code>sun.misc.Launcher$ExtClassLoader</code>实现，它负责加载JDK\jre\lib\ext目录中，或者由java.ext.dirs系统变量指定的路径中的所有类库(如javax.*开头的类)，开发者可以直接使用扩展类加载器。</p>
+<p>扩展类加载器，javax开头</p>
+<p><strong>应用程序类加载器</strong>: Application ClassLoader，该类加载器由<code>sun.misc.Launcher$AppClassLoader</code>来实现，它负责加载用户类路径(ClassPath)所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
+<p>程序员自己写的编译过后的.class文件</p>
+<h2 id="22-Class-forName-和ClassLoader-loadClass-区别"><a href="#22-Class-forName-和ClassLoader-loadClass-区别" class="headerlink" title="22. Class.forName()和ClassLoader.loadClass()区别?"></a>22. Class.forName()和ClassLoader.loadClass()区别?</h2><ul>
+<li><code>Class.forName()</code>: 将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块；</li>
+<li><code>ClassLoader.loadClass()</code>: 只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。</li>
+<li><code>Class.forName(name, initialize, loader)</code>带参函数也可控制是否加载static块。并且只有调用了newInstance()方法采用调用构造函数，创建类的对象</li>
+</ul>
+<h2 id="23-JVM有哪些类加载机制？"><a href="#23-JVM有哪些类加载机制？" class="headerlink" title="23.JVM有哪些类加载机制？"></a>23.JVM有哪些类加载机制？</h2><p><strong>全盘负责</strong>，当一个类加载器负责加载某个Class时，该Class所依赖的和引用的其他Class也将由该类加载器负责载入，除非显示使用另外一个类加载器来载入</p>
+<p><strong>父类委托</strong>，先让父类加载器试图加载该类，只有在父类加载器无法加载该类时才尝试从自己的类路径中加载该类</p>
+<p><strong>缓存机制</strong>，缓存机制将会保证所有加载过的Class都会被缓存，当程序中需要使用某个Class时，类加载器先从缓存区寻找该Class，只有缓存区不存在，系统才会读取该类对应的二进制数据，并将其转换成Class对象，存入缓存区。这就是为什么修改了Class后，必须重启JVM，程序的修改才会生效</p>
+<p><strong>双亲委派机制</strong>, 如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类</p>
+<p>当AppClassLoader加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器ExtClassLoader去完成。</p>
+<p>当ExtClassLoader加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader去完成。</p>
+<p>如果BootStrapClassLoader加载失败(例如在$JAVA_HOME/jre/lib里未查找到该class)，会使用ExtClassLoader来尝试加载；</p>
+<p>若ExtClassLoader也加载失败，则会使用AppClassLoader来加载，如果AppClassLoader也加载失败，则会报出异常ClassNotFoundException</p>
+<h2 id="23-多线程使用场景"><a href="#23-多线程使用场景" class="headerlink" title="23.多线程使用场景"></a>23.多线程使用场景</h2><h3 id="1-1-多线程应该最多的场景："><a href="#1-1-多线程应该最多的场景：" class="headerlink" title="1.1 多线程应该最多的场景："></a>1.1 多线程应该最多的场景：</h3><p>web服务器本身； 各种专用服务器（如游戏服务器）；</p>
+<h3 id="1-2多线程的常见应用场景："><a href="#1-2多线程的常见应用场景：" class="headerlink" title="1.2多线程的常见应用场景："></a>1.2多线程的常见应用场景：</h3><p>1、后台任务，例如：定时向大量（100w以上）的用户发送邮件； 2、异步处理，例如：发微博、记录日志等； 3、分布式计算</p>
+<p>卖票</p>
+<h2 id="24-一个java文件中是否可以定义多个类"><a href="#24-一个java文件中是否可以定义多个类" class="headerlink" title="24.一个java文件中是否可以定义多个类"></a>24.一个java文件中是否可以定义多个类</h2><p>一个java文件中可以定义多个类，但是最多只有一个类被public修饰，并且这个类的类名与文件名必须相同，若这个文件中没有public的类，则文件名随便是一个类的名字即可</p>
+<h2 id="25-java锁"><a href="#25-java锁" class="headerlink" title="25.java锁"></a>25.java锁</h2><p>悲观锁：一个共享数据加了悲观锁，那线程每次想操作这个数据前都会假设其他线程也可能会操作这个数据，所以每次操作前都会上锁，这样其他线程想操作这个数据拿不到锁只能阻塞了</p>
+<p>乐观锁：操作数据时不会上锁，在更新的时候会判断一下在此期间是否有其他线程去更新这个数据</p>
+<p>独占锁：锁一次只能被一个线程所持有。如果一个线程对数据加上排他锁后，那么其他线程不能再对该数据加任何类型的锁。获得独占锁的线程即能读数据又能修改数据</p>
+<p>共享锁：指锁可被多个线程所持有。如果一个线程对数据加上共享锁后，那么其他线程只能对数据再加共享锁，不能加独占锁。获得共享锁的线程只能读数据，不能修改数据。</p>
+<p>互斥锁：是独占锁的一种常规实现，是指某一资源同时只允许一个访问者对其进行访问，具有唯一性和排它性。互斥锁一次只能一个线程拥有互斥锁，其他线程只有等待。</p>
+<p>读写锁：是共享锁的一种具体实现。读写锁管理一组锁，一个是只读的锁，一个是写锁。</p>
+<p>读锁可以在没有写锁的时候被多个线程同时持有，而写锁是独占的。写锁的优先级要高于读锁，一个获得了读锁的线程必须能看到前一个释放的写锁所更新的内容。</p>
+<p>读写锁相比于互斥锁并发程度更高，每次只有一个写线程，但是同时可以有多个线程并发读。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2022/08/13/java八股文/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/13/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
